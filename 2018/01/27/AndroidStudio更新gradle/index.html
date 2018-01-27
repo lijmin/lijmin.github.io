@@ -6,19 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>android编译过程 | 垚淼</title>
+  <title>AndroidStudio更新gradle | 垚淼</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="android编译过程">
-<meta name="keywords" content="android">
+  <meta name="description" content="Mac系统下更新AndroidStudio gradle">
+<meta name="keywords" content="android studio,gradle">
 <meta property="og:type" content="article">
-<meta property="og:title" content="android编译过程">
-<meta property="og:url" content="http://yoursite.com/2016/06/11/android编程01－编译过程/index.html">
+<meta property="og:title" content="AndroidStudio更新gradle">
+<meta property="og:url" content="http://yoursite.com/2018/01/27/AndroidStudio更新gradle/index.html">
 <meta property="og:site_name" content="垚淼">
-<meta property="og:description" content="android编译过程">
-<meta property="og:updated_time" content="2016-06-11T13:20:52.000Z">
+<meta property="og:description" content="Mac系统下更新AndroidStudio gradle">
+<meta property="og:image" content="https://github.com/jimmylee89/BlogBackup/blob/master/blog_img/img_blog_2018012701.png?raw=true">
+<meta property="og:updated_time" content="2018-01-27T13:37:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android编译过程">
-<meta name="twitter:description" content="android编译过程">
+<meta name="twitter:title" content="AndroidStudio更新gradle">
+<meta name="twitter:description" content="Mac系统下更新AndroidStudio gradle">
+<meta name="twitter:image" content="https://github.com/jimmylee89/BlogBackup/blob/master/blog_img/img_blog_2018012701.png?raw=true">
   
     <link rel="alternative" href="/atom.xml" title="垚淼" type="application/atom+xml">
   
@@ -150,32 +152,28 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-android编程01－编译过程" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-AndroidStudio更新gradle" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      android编译过程
+      AndroidStudio更新gradle
     </h1>
   
 
         
-        <a href="/2016/06/11/android编程01－编译过程/" class="archive-article-date">
-  	<time datetime="2016-06-11T04:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-11</time>
+        <a href="/2018/01/27/AndroidStudio更新gradle/" class="archive-article-date">
+  	<time datetime="2018-01-27T12:25:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li>res/目录下的xml文件和AndroidManifest.xml通过资源打包工具（aapt）生成已编译资源和R.java。</li>
-<li>编译java源码，生成java字节码（.class）文件。</li>
-<li>交叉编译生成dalvik字节码（.dex）。</li>
-<li>.dex和已编译资源，签名部署成apk（.apk）。</li>
-</ol>
+        <p>android studio 创建项目时，卡在building界面，如图：<br><img src="https://github.com/jimmylee89/BlogBackup/blob/master/blog_img/img_blog_2018012701.png?raw=true" alt=""><br>可能是在更新gradle，由于网络问题下载速度很慢。如果你有足够的耐心，可以等到它更新完。或者使用梯子可以提高一点下载速度。<br>下面说的是本地更新的方法:<br><a id="more"></a><br>打开项目的gradle-wrapper.properties文件，可以看到如下内容<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">distributionBase</span>=GRADLE_USER_HOME</span><br><span class="line"><span class="attr">distributionPath</span>=wrapper/dists</span><br><span class="line"><span class="attr">zipStoreBase</span>=GRADLE_USER_HOME</span><br><span class="line"><span class="attr">zipStorePath</span>=wrapper/dists</span><br><span class="line"><span class="attr">distributionUrl</span>=https\://services.gradle.org/distributions/gradle-<span class="number">4.4</span>.<span class="number">1</span>-all.zip</span><br></pre></td></tr></table></figure></p>
+<p>distributionUrl就是下载路径。先拷贝路径用迅雷下载，保存在本地。<br>然后把distributionUrl替换为<code>distributionUrl=file\:/Users/***/gradle-4.4.1-all.zip</code><br>重新构建项目就可以了。</p>
 
       
 
@@ -220,7 +218,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">android studio</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">gradle</a>
         		</li>
       		
 		</ul>
@@ -276,7 +278,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2016/06/11/android编程01－编译过程/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/01/27/AndroidStudio更新gradle/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -290,18 +292,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/01/27/AndroidStudio更新gradle/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          AndroidStudio更新gradle
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/06/04/Mac配置android adb环境变量/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Mac配置android adb环境变量</div>
+    <a href="/2016/06/11/android编程01－编译过程/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">android编译过程</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -331,7 +324,7 @@
   
 
   
-  <div id="SOHUCS" sid="android编程01－编译过程" ></div> 
+  <div id="SOHUCS" sid="AndroidStudio更新gradle" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({

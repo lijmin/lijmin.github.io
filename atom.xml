@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-11T13:20:52.000Z</updated>
+  <updated>2018-01-27T13:37:32.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AndroidStudio更新gradle</title>
+    <link href="http://yoursite.com/2018/01/27/AndroidStudio%E6%9B%B4%E6%96%B0gradle/"/>
+    <id>http://yoursite.com/2018/01/27/AndroidStudio更新gradle/</id>
+    <published>2018-01-27T12:25:12.000Z</published>
+    <updated>2018-01-27T13:37:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>android studio 创建项目时，卡在building界面，如图：<br><img src="https://github.com/jimmylee89/BlogBackup/blob/master/blog_img/img_blog_2018012701.png?raw=true" alt=""><br>可能是在更新gradle，由于网络问题下载速度很慢。如果你有足够的耐心，可以等到它更新完。或者使用梯子可以提高一点下载速度。<br>下面说的是本地更新的方法:<br><a id="more"></a><br>打开项目的gradle-wrapper.properties文件，可以看到如下内容<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">distributionBase</span>=GRADLE_USER_HOME</span><br><span class="line"><span class="attr">distributionPath</span>=wrapper/dists</span><br><span class="line"><span class="attr">zipStoreBase</span>=GRADLE_USER_HOME</span><br><span class="line"><span class="attr">zipStorePath</span>=wrapper/dists</span><br><span class="line"><span class="attr">distributionUrl</span>=https\://services.gradle.org/distributions/gradle-<span class="number">4.4</span>.<span class="number">1</span>-all.zip</span><br></pre></td></tr></table></figure></p><p>distributionUrl就是下载路径。先拷贝路径用迅雷下载，保存在本地。<br>然后把distributionUrl替换为<code>distributionUrl=file\:/Users/***/gradle-4.4.1-all.zip</code><br>重新构建项目就可以了。</p>]]></content>
+    
+    <summary type="html">
+    
+      Mac系统下更新AndroidStudio gradle
+    
+    </summary>
+    
+    
+      <category term="android studio" scheme="http://yoursite.com/tags/android-studio/"/>
+    
+      <category term="gradle" scheme="http://yoursite.com/tags/gradle/"/>
+    
+  </entry>
   
   <entry>
     <title>android编译过程</title>
@@ -41,7 +63,7 @@
     <link href="http://yoursite.com/2016/06/04/Mac%E9%85%8D%E7%BD%AEandroid%20adb%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"/>
     <id>http://yoursite.com/2016/06/04/Mac配置android adb环境变量/</id>
     <published>2016-06-04T14:43:12.000Z</published>
-    <updated>2016-06-05T08:39:35.000Z</updated>
+    <updated>2018-01-18T13:09:08.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Lunix基本操作"><a href="#Lunix基本操作" class="headerlink" title="Lunix基本操作"></a>Lunix基本操作</h3><ol><li>sudo 以root用户的权限操作</li><li>chmod 修改文件的权限</li><li>vim 编辑文件<br>a) i进入编辑模式<br>b) u撤销,ctrl+r反撤销<br>c) :q退出，:wq保存退出</li></ol><a id="more"></a><h3 id="配置adb"><a href="#配置adb" class="headerlink" title="配置adb"></a>配置adb</h3><ol><li>找到adb安装位置,一般是在/Users/ljm/Library/Android/sdk/platforms </li><li>修改etc目录下auto_master文件，/home前面加＃，然后执行:<code>sudo automount</code>在不重启电脑的情况下重新加载这个文件</li><li>在／home目录下添加文件,<code>touch .bash_profile</code></li><li>编辑.bash_profile，<code>vim .bash_profile</code> 添加adb安装路径<code>export PATH=${PATH}:/Users/ljm/Library/Android/sdk/platform-tools</code></li><li>执行<code>source .bash_profile</code>加载这个文件，执行<code>adb version</code>查看是否安装成功，如果成功会显示版本号<br><b>到这里配置已经完成，但不会开机启动</b></li></ol><h3 id="设置开机启动"><a href="#设置开机启动" class="headerlink" title="设置开机启动"></a>设置开机启动</h3><ol><li>修改／etc/bashrc文件，在最后面添加<code>. /home/.bash_profile</code></li><li>如果文件没有权限,先设置权限<code>chmod 777 /etc/bashrc</code>设置所有权限</li><li>重启电脑查看效果，成功之后可以把权限改回来</li></ol><h3 id="补充权限知识"><a href="#补充权限知识" class="headerlink" title="补充权限知识"></a>补充权限知识</h3><p>第一个数字表示文件所有者的权限<br>第二个数字表示与文件所有者同属一个用户组的其他用户的权限<br>第三个数字表示其它用户组的权限。</p><p>权限分为三种：读（r=4），写（w=2），执行（x=1）。综合起来还有可读可执行（rx=5=4+1）、可读可写（rw=6=4+2）、可读可写可执行(rwx=7=4+2+1)。</p>]]></content>
     
@@ -52,7 +74,7 @@
     </summary>
     
     
-      <category term="Mac环境变量" scheme="http://yoursite.com/tags/Mac%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"/>
+      <category term="mac" scheme="http://yoursite.com/tags/mac/"/>
     
   </entry>
   
@@ -81,7 +103,7 @@
     <link href="http://yoursite.com/2015/06/07/Mac%E5%91%BD%E4%BB%A4/"/>
     <id>http://yoursite.com/2015/06/07/Mac命令/</id>
     <published>2015-06-07T01:43:12.000Z</published>
-    <updated>2015-10-01T16:08:52.000Z</updated>
+    <updated>2018-01-18T13:08:53.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="基本操作命令"><a href="#基本操作命令" class="headerlink" title="基本操作命令"></a>基本操作命令</h3><ul><li>进入根目录 <code>cd /</code></li><li>查看目录下的所有文件 <code>ls</code></li><li>进入下级目录 <code>cd Users</code>（Users表示目录名）</li><li>进入指定目录 <code>cd /Users/lijiamin/Library/Saved\ Searches/jimmy/swift</code>，cd ＋ 目录名，也可以cd ＋ 拖动文件夹到terminal</li><li>删除文件 <code>rm document</code> （删除一个叫document的文件）</li><li>显示隐藏文件 defaults write com.apple.finder AppleShowAllFiles -bool true（false为隐藏）</li></ul>]]></content>
     
@@ -97,7 +119,7 @@
     </summary>
     
     
-      <category term="mac命令" scheme="http://yoursite.com/tags/mac%E5%91%BD%E4%BB%A4/"/>
+      <category term="mac" scheme="http://yoursite.com/tags/mac/"/>
     
   </entry>
   
@@ -106,7 +128,7 @@
     <link href="http://yoursite.com/2012/08/08/%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E8%A3%85win7/"/>
     <id>http://yoursite.com/2012/08/08/移动硬盘装win7/</id>
     <published>2012-08-07T16:19:00.000Z</published>
-    <updated>2015-06-07T07:43:15.000Z</updated>
+    <updated>2018-01-18T13:08:12.000Z</updated>
     
     <content type="html"><![CDATA[<p><span style="font-size: 16px;">总结一下用移动硬盘装win7的方法</span></p><p><span style="font-size: 16px;">1、给移动硬盘分区（分区是为了方便管理）</span></p><p><span style="font-size: 16px;">　　我是在win7系统上分区的。控制面板–&gt;系统与安全–&gt;创建并格式化硬盘分区，进去之后选择你的移动硬盘–&gt;删除卷（会丢失数据的，建议用分区工具，我的移动硬盘是空的就无所谓了）–&gt;在下面找到未分配区–&gt;右击–&gt;新建分区（输入你要划分的大小就可以了，这里新建的都是主分区，主分区只有3个，如果需要划分多个，就在主分区上扩展卷）</span></p><p><span style="font-size: 16px;">右击你要放系统的分区–&gt;将分区标记为活动分区（设置分区为可引导）</span></p><a id="more"></a><p><span style="font-size: 16px;">2、下载旗舰版win7系统（GHOST版安装失败，可能是之前方法错误，后来也没再试）</span></p><p><span style="font-size: 16px;">　　把ISO系统文件解压到移动硬盘分区的根目录上（是根目录，不然安装时会报错BOOTMGR is missing).</span></p><p><span style="font-size: 16px;">3、设置USB启动</span></p><p><span style="font-size: 16px;">　　开机按F2(有的机器不是F2，有的F1、F10.都按一下就知道了)进入BIOS–&gt;Boot（把USB-HDD调到第一位置）</span></p><p><span style="font-size: 16px;">4、重启电脑，开始安装。跟光驱安装一样，速度更快一些</span></p><p><span style="font-size: 16px;">&nbsp;</span></p><p><span style="font-size: 16px;">PS：重装前最好先备份好驱动，有时需要网卡驱动，上不了网是比较纠结的。</span></p>]]></content>
     
@@ -120,7 +142,7 @@
     </summary>
     
     
-      <category term="操作系统" scheme="http://yoursite.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+      <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
     
   </entry>
   
