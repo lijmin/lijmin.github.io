@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2016 | 垚淼</title>
+  <title>Mac配置android adb环境变量 | 垚淼</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JimmyLee’s blog | java | android">
-<meta property="og:type" content="website">
-<meta property="og:title" content="垚淼">
-<meta property="og:url" content="http://yoursite.com/archives/2016/index.html">
+  <meta name="description" content="Mac配置android adb环境变量">
+<meta name="keywords" content="mac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac配置android adb环境变量">
+<meta property="og:url" content="http://yoursite.com/2016/06/04/6、Mac配置android adb环境变量/index.html">
 <meta property="og:site_name" content="垚淼">
-<meta property="og:description" content="JimmyLee’s blog | java | android">
+<meta property="og:description" content="Mac配置android adb环境变量">
+<meta property="og:updated_time" content="2018-01-18T13:09:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="垚淼">
-<meta name="twitter:description" content="JimmyLee’s blog | java | android">
+<meta name="twitter:title" content="Mac配置android adb环境变量">
+<meta name="twitter:description" content="Mac配置android adb环境变量">
   
     <link rel="alternative" href="/atom.xml" title="垚淼" type="application/atom+xml">
   
@@ -148,74 +150,85 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-6、Mac配置android adb环境变量" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/06/11/7、android编程01－编译过程/" class="archive-article-date">
-  	<time datetime="2016-06-11T04:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-11</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/11/7、android编程01－编译过程/">android编译过程</a>
+    <h1 class="article-title" itemprop="name">
+      Mac配置android adb环境变量
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/06/04/6、Mac配置android adb环境变量/" class="archive-article-date">
+        
+        <a href="/2016/06/04/6、Mac配置android adb环境变量/" class="archive-article-date">
   	<time datetime="2016-06-04T14:43:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-04</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/04/6、Mac配置android adb环境变量/">Mac配置android adb环境变量</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Lunix基本操作"><a href="#Lunix基本操作" class="headerlink" title="Lunix基本操作"></a>Lunix基本操作</h3><ol>
+<li>sudo 以root用户的权限操作</li>
+<li>chmod 修改文件的权限</li>
+<li>vim 编辑文件<br>a) i进入编辑模式<br>b) u撤销,ctrl+r反撤销<br>c) :q退出，:wq保存退出</li>
+</ol>
+<a id="more"></a>
+<h3 id="配置adb"><a href="#配置adb" class="headerlink" title="配置adb"></a>配置adb</h3><ol>
+<li>找到adb安装位置,一般是在/Users/ljm/Library/Android/sdk/platforms </li>
+<li>修改etc目录下auto_master文件，/home前面加＃，然后执行:<code>sudo automount</code>在不重启电脑的情况下重新加载这个文件</li>
+<li>在／home目录下添加文件,<code>touch .bash_profile</code></li>
+<li>编辑.bash_profile，<code>vim .bash_profile</code> 添加adb安装路径<code>export PATH=${PATH}:/Users/ljm/Library/Android/sdk/platform-tools</code></li>
+<li>执行<code>source .bash_profile</code>加载这个文件，执行<code>adb version</code>查看是否安装成功，如果成功会显示版本号<br><b>到这里配置已经完成，但不会开机启动</b></li>
+</ol>
+<h3 id="设置开机启动"><a href="#设置开机启动" class="headerlink" title="设置开机启动"></a>设置开机启动</h3><ol>
+<li>修改／etc/bashrc文件，在最后面添加<code>. /home/.bash_profile</code></li>
+<li>如果文件没有权限,先设置权限<code>chmod 777 /etc/bashrc</code>设置所有权限</li>
+<li>重启电脑查看效果，成功之后可以把权限改回来</li>
+</ol>
+<h3 id="补充权限知识"><a href="#补充权限知识" class="headerlink" title="补充权限知识"></a>补充权限知识</h3><p>第一个数字表示文件所有者的权限<br>第二个数字表示与文件所有者同属一个用户组的其他用户的权限<br>第三个数字表示其它用户组的权限。</p>
+<p>权限分为三种：读（r=4），写（w=2），执行（x=1）。综合起来还有可读可执行（rx=5=4+1）、可读可写（rw=6=4+2）、可读可写可执行(rwx=7=4+2+1)。</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/jimmylee89/BlogBackup/master/blog_img/img_pay_ali.JPG">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/jimmylee89/BlogBackup/master/blog_img/img_pay_wechat.JPG">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -227,19 +240,125 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2016/06/04/6、Mac配置android adb环境变量/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/06/11/7、android编程01－编译过程/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          android编译过程
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2015/10/01/5、Mac使用hexo搭建博客/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mac使用hexo搭建博客</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+  <div id="SOHUCS" sid="6、Mac配置android adb环境变量" ></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "cytqapLIx",
+        conf: "prod_1e1d621ac6f9fe099be420905e3d8762"
+    });
+</script>
+</script>
+  
+
+  
+
+  
 
 
           </div>
@@ -262,8 +381,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

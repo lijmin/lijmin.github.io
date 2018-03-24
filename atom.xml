@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-03-02T14:25:34.000Z</updated>
+  <updated>2018-03-11T13:29:45.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,9 +17,29 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>android饼状图</title>
+    <link href="http://yoursite.com/2018/03/11/10%E3%80%81android%E9%A5%BC%E7%8A%B6%E5%9B%BE/"/>
+    <id>http://yoursite.com/2018/03/11/10、android饼状图/</id>
+    <published>2018-03-11T01:20:00.000Z</published>
+    <updated>2018-03-11T13:29:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h3><p>github：<a href="https://github.com/jimmylee89/ChartView" target="_blank" rel="noopener">https://github.com/jimmylee89/ChartView</a></p><h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p><img src="http://www.ljmin.com/img_blog9_01.jpg" alt="效果图"><br><a id="more"></a></p><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>gradle<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">implementation</span> <span class="string">'com.jimmylee.chartview:pieview:0.0.1'</span></span><br></pre></td></tr></table></figure></p><p>布局文件添加<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;com.jimmylee.pieview.PieView</span><br><span class="line">    android:<span class="attribute">id</span>=<span class="string">"@+id/pieView"</span></span><br><span class="line">    android:<span class="attribute">layout_width</span>=<span class="string">"100dp"</span></span><br><span class="line">    android:<span class="attribute">layout_height</span>=<span class="string">"100dp"</span></span><br><span class="line">    app:<span class="attribute">backgroundColor</span>=<span class="string">"#e5e5e5"</span></span><br><span class="line">    app:<span class="attribute">startAngle</span>=<span class="string">"138"</span> /&gt;</span><br></pre></td></tr></table></figure></p><p>java引用<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">PieView pieView = findViewById(R.id.pieView);</span><br><span class="line"></span><br><span class="line">List&lt;Part&gt; parts = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">parts.add(<span class="keyword">new</span> Part(<span class="number">60</span>, ContextCompat.getColor(<span class="keyword">this</span>, R.color.colorPrimary)));</span><br><span class="line">parts.add(<span class="keyword">new</span> Part(<span class="number">100</span>, Color.GREEN));</span><br><span class="line">parts.add(<span class="keyword">new</span> Part(<span class="number">100</span>, Color.TRANSPARENT));</span><br><span class="line">parts.add(<span class="keyword">new</span> Part(<span class="number">100</span>, <span class="number">0xffff0000</span>));</span><br><span class="line">pieView.setParts(parts);</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      android自定义饼状图
+    
+    </summary>
+    
+    
+      <category term="android" scheme="http://yoursite.com/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
     <title>android上传library到jcenter</title>
-    <link href="http://yoursite.com/2018/02/02/android%E4%B8%8A%E4%BC%A0library%E5%88%B0jcenter/"/>
-    <id>http://yoursite.com/2018/02/02/android上传library到jcenter/</id>
+    <link href="http://yoursite.com/2018/02/02/9%E3%80%81android%E4%B8%8A%E4%BC%A0library%E5%88%B0jcenter/"/>
+    <id>http://yoursite.com/2018/02/02/9、android上传library到jcenter/</id>
     <published>2018-02-02T00:54:12.000Z</published>
     <updated>2018-03-02T14:25:34.000Z</updated>
     
@@ -38,8 +58,8 @@
   
   <entry>
     <title>AndroidStudio更新gradle</title>
-    <link href="http://yoursite.com/2018/01/27/AndroidStudio%E6%9B%B4%E6%96%B0gradle/"/>
-    <id>http://yoursite.com/2018/01/27/AndroidStudio更新gradle/</id>
+    <link href="http://yoursite.com/2018/01/27/8%E3%80%81AndroidStudio%E6%9B%B4%E6%96%B0gradle/"/>
+    <id>http://yoursite.com/2018/01/27/8、AndroidStudio更新gradle/</id>
     <published>2018-01-27T12:25:12.000Z</published>
     <updated>2018-01-27T13:37:32.000Z</updated>
     
@@ -60,8 +80,8 @@
   
   <entry>
     <title>android编译过程</title>
-    <link href="http://yoursite.com/2016/06/11/android%E7%BC%96%E7%A8%8B01%EF%BC%8D%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/"/>
-    <id>http://yoursite.com/2016/06/11/android编程01－编译过程/</id>
+    <link href="http://yoursite.com/2016/06/11/7%E3%80%81android%E7%BC%96%E7%A8%8B01%EF%BC%8D%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/"/>
+    <id>http://yoursite.com/2016/06/11/7、android编程01－编译过程/</id>
     <published>2016-06-11T04:20:00.000Z</published>
     <updated>2016-06-11T13:20:52.000Z</updated>
     
@@ -80,8 +100,8 @@
   
   <entry>
     <title>Mac配置android adb环境变量</title>
-    <link href="http://yoursite.com/2016/06/04/Mac%E9%85%8D%E7%BD%AEandroid%20adb%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"/>
-    <id>http://yoursite.com/2016/06/04/Mac配置android adb环境变量/</id>
+    <link href="http://yoursite.com/2016/06/04/6%E3%80%81Mac%E9%85%8D%E7%BD%AEandroid%20adb%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"/>
+    <id>http://yoursite.com/2016/06/04/6、Mac配置android adb环境变量/</id>
     <published>2016-06-04T14:43:12.000Z</published>
     <updated>2018-01-18T13:09:08.000Z</updated>
     
@@ -100,8 +120,8 @@
   
   <entry>
     <title>Mac使用hexo搭建博客</title>
-    <link href="http://yoursite.com/2015/10/01/Mac%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://yoursite.com/2015/10/01/Mac使用hexo搭建博客/</id>
+    <link href="http://yoursite.com/2015/10/01/5%E3%80%81Mac%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://yoursite.com/2015/10/01/5、Mac使用hexo搭建博客/</id>
     <published>2015-10-01T01:43:12.000Z</published>
     <updated>2016-06-05T08:50:11.000Z</updated>
     
@@ -120,12 +140,12 @@
   
   <entry>
     <title>Mac控制台命令</title>
-    <link href="http://yoursite.com/2015/06/07/Mac%E5%91%BD%E4%BB%A4/"/>
-    <id>http://yoursite.com/2015/06/07/Mac命令/</id>
+    <link href="http://yoursite.com/2015/06/07/4%E3%80%81Mac%E5%91%BD%E4%BB%A4/"/>
+    <id>http://yoursite.com/2015/06/07/4、Mac命令/</id>
     <published>2015-06-07T01:43:12.000Z</published>
-    <updated>2018-01-18T13:08:53.000Z</updated>
+    <updated>2018-03-11T05:06:52.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="基本操作命令"><a href="#基本操作命令" class="headerlink" title="基本操作命令"></a>基本操作命令</h3><ul><li>进入根目录 <code>cd /</code></li><li>查看目录下的所有文件 <code>ls</code></li><li>进入下级目录 <code>cd Users</code>（Users表示目录名）</li><li>进入指定目录 <code>cd /Users/lijiamin/Library/Saved\ Searches/jimmy/swift</code>，cd ＋ 目录名，也可以cd ＋ 拖动文件夹到terminal</li><li>删除文件 <code>rm document</code> （删除一个叫document的文件）</li><li>显示隐藏文件 defaults write com.apple.finder AppleShowAllFiles -bool true（false为隐藏）</li></ul>]]></content>
+    <content type="html"><![CDATA[<h3 id="基本操作命令"><a href="#基本操作命令" class="headerlink" title="基本操作命令"></a>基本操作命令</h3><ul><li>进入根目录 <code>cd /</code></li><li>查看目录下的所有文件 <code>ls</code></li><li>进入下级目录 <code>cd Users</code>（Users表示目录名）</li><li>进入指定目录 <code>cd /Users/lijiamin/Library/Saved\ Searches/jimmy/swift</code>，cd ＋ 目录名，也可以cd ＋ 拖动文件夹到terminal</li><li>删除文件 <code>rm document</code> （删除一个叫document的文件）</li><li>显示隐藏文件 defaults write com.apple.finder AppleShowAllFiles -bool true（false为隐藏）</li><li>将文件内容追加到另外一个文件上 cat /mnt/gitData/gitPub/MacLijiamin/id_rsa.pub &gt;&gt;/home/git/.ssh/authorized_keys</li></ul>]]></content>
     
     <summary type="html">
     
@@ -145,8 +165,8 @@
   
   <entry>
     <title>移动硬盘装win7</title>
-    <link href="http://yoursite.com/2012/08/08/%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E8%A3%85win7/"/>
-    <id>http://yoursite.com/2012/08/08/移动硬盘装win7/</id>
+    <link href="http://yoursite.com/2012/08/08/3%E3%80%81%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E8%A3%85win7/"/>
+    <id>http://yoursite.com/2012/08/08/3、移动硬盘装win7/</id>
     <published>2012-08-07T16:19:00.000Z</published>
     <updated>2018-01-18T13:08:12.000Z</updated>
     
@@ -168,8 +188,8 @@
   
   <entry>
     <title>网页中加入百度地图（带地区搜索）</title>
-    <link href="http://yoursite.com/2012/07/27/%E7%BD%91%E9%A1%B5%E4%B8%AD%E5%8A%A0%E5%85%A5%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%EF%BC%88%E5%B8%A6%E5%9C%B0%E5%8C%BA%E6%90%9C%E7%B4%A2%EF%BC%89/"/>
-    <id>http://yoursite.com/2012/07/27/网页中加入百度地图（带地区搜索）/</id>
+    <link href="http://yoursite.com/2012/07/27/2%E3%80%81%E7%BD%91%E9%A1%B5%E4%B8%AD%E5%8A%A0%E5%85%A5%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%EF%BC%88%E5%B8%A6%E5%9C%B0%E5%8C%BA%E6%90%9C%E7%B4%A2%EF%BC%89/"/>
+    <id>http://yoursite.com/2012/07/27/2、网页中加入百度地图（带地区搜索）/</id>
     <published>2012-07-27T13:06:00.000Z</published>
     <updated>2015-06-07T07:47:14.000Z</updated>
     
@@ -193,8 +213,8 @@
   
   <entry>
     <title>博客园评论（回复、引用）的实现</title>
-    <link href="http://yoursite.com/2012/07/25/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E8%AF%84%E8%AE%BA%EF%BC%88%E5%9B%9E%E5%A4%8D%E3%80%81%E5%BC%95%E7%94%A8%EF%BC%89%E7%9A%84%E5%AE%9E%E7%8E%B0/"/>
-    <id>http://yoursite.com/2012/07/25/博客园评论（回复、引用）的实现/</id>
+    <link href="http://yoursite.com/2012/07/25/1%E3%80%81%E5%8D%9A%E5%AE%A2%E5%9B%AD%E8%AF%84%E8%AE%BA%EF%BC%88%E5%9B%9E%E5%A4%8D%E3%80%81%E5%BC%95%E7%94%A8%EF%BC%89%E7%9A%84%E5%AE%9E%E7%8E%B0/"/>
+    <id>http://yoursite.com/2012/07/25/1、博客园评论（回复、引用）的实现/</id>
     <published>2012-07-24T16:58:00.000Z</published>
     <updated>2015-06-07T07:44:31.000Z</updated>
     
