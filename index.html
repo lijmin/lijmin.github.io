@@ -150,6 +150,86 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-11、android日历" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/02/11、android日历/">android日历</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/02/11、android日历/" class="archive-article-date">
+  	<time datetime="2018-11-02T02:28:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h3><p>github：<a href="https://github.com/jimmylee89/Calendar" target="_blank" rel="noopener">https://github.com/jimmylee89/Calendar</a></p>
+<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><ol>
+<li>点击月份滚动到中间指示</li>
+<li>日历可左右滑动</li>
+<li>标记当前日期，设置点击效果</li>
+</ol>
+<h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p><img src="https://github.com/jimmylee89/Calendar/raw/master/demo.gif" alt="效果图"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/02/11、android日历/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-10、android饼状图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -171,7 +251,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h3><p>github：<a href="https://github.com/jimmylee89/ChartView" target="_blank" rel="noopener">https://github.com/jimmylee89/ChartView</a></p>
-<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p><img src="http://www.ljmin.com/img_blog9_01.jpg" alt="效果图"><br>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p><img src="http://image.ljmin.com/img_blog10_01.jpg" alt="效果图"><br>
         
           <a class="article-more-a" href="/2018/03/11/10、android饼状图/#more">more >></a>
         
@@ -1078,103 +1158,10 @@ initMap();//创建和初始化地图
 
 
   
-    <article id="post-1、博客园评论（回复、引用）的实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/07/25/1、博客园评论（回复、引用）的实现/">博客园评论（回复、引用）的实现</a>
-    </h1>
-  
-
-        
-        <a href="/2012/07/25/1、博客园评论（回复、引用）的实现/" class="archive-article-date">
-  	<time datetime="2012-07-24T16:58:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-07-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>使用过博客园评论功能的人都知道，点击回复，光标会移到文本框里并在文本框加入@XXX；点击引用，在文本框加入@XXX跟回复的内容。</p>
-<p>这里我想实现的就是光标移动并向textarea加入文字</p>
-<p>第一步：点击加入文字（假设已得到用户名张三、李四）</p>
-<p>先看效果:(点击回复)</p>
-<style><!--
-.pointer {
-        margin-left: 50px;
-        cursor: pointer;    
-        color: #ffa800;
-    }
---></style>
-
-<script type="text/javascript">// <![CDATA[
-function insert(con)
-{var _abc=document.getElementById('reply_text').value;
-_abc=_abc+con;
-document.getElementById('reply_text').value=_abc
-}
-// ]]&gt;</script>
-
-<p>一楼：张三<a class="pointer" onclick="insert('@张三\n')">回复</a><br>二楼：李四<a class="pointer" onclick="insert('@李四\n')">回复</a></p>
-<p><textarea id="reply_text" rows="5"></textarea></p>
-        
-          <a class="article-more-a" href="/2012/07/25/1、博客园评论（回复、引用）的实现/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2012/07/25/1、博客园评论（回复、引用）的实现/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
@@ -1260,11 +1247,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">windows</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1272,11 +1259,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
+                <a href="javascript:void(0)" class="js-tag color3">windows</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
