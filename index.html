@@ -10,18 +10,18 @@
 wx.config({
 	    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
 	    appId:'wx6d5a05877bf93377', // 必填，公众号的唯一标识
-	    timestamp:1414587457, // 必填，生成签名的时间戳
-	    nonceStr: 'Wm3WZYTPz0wzccnW', // 必填，生成签名的随机串
-	    signature:'0f9de62fce790f9a083d5c99e95740ceb90c27ed',// 必填，签名，见附录1
+	    timestamp:1563955814, // 必填，生成签名的时间戳
+	    nonceStr: '2f85586f-6cdc-4d37-ba43-d9f454e21933', // 必填，生成签名的随机串
+	    signature:'526b34ef348d939a3b2861e2552d4e81da5f0c96',// 必填，签名，见附录1
 	    jsApiList: ['updateAppMessageShareData'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 	});
 	
 	wx.ready(function () {   //需在用户可能点击分享按钮前就先调用
     wx.updateAppMessageShareData({ 
-        title: '', // 分享标题
-        desc: '', // 分享描述
-        link: '', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-        imgUrl: '', // 分享图标
+        title: 'title', // 分享标题
+        desc: 'desc', // 分享描述
+        link: 'http://www.baidu.com', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://images2015.cnblogs.com/blog/838532/201607/838532-20160708140317327-1765180502.png', // 分享图标
         success: function () {
           // 设置成功
 		  console.log('success')
