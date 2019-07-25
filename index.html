@@ -29,9 +29,9 @@ wx.onMenuShareTimeline({
 wx.config({
 	    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
 	    appId:'wx6d5a05877bf93377', // 必填，公众号的唯一标识
-	    timestamp:1563955814, // 必填，生成签名的时间戳
-	    nonceStr: '2f85586f-6cdc-4d37-ba43-d9f454e21933', // 必填，生成签名的随机串
-	    signature:'526b34ef348d939a3b2861e2552d4e81da5f0c96',// 必填，签名，见附录1
+	    timestamp:1564026613, // 必填，生成签名的时间戳
+	    nonceStr: 'ef8991e9-1dac-4f5c-b961-4f3a6684f7e1', // 必填，生成签名的随机串
+	    signature:'084b819bfa6c05e5d6c3af4af144cc9497c8e302',// 必填，签名，见附录1
 	    jsApiList: ["onMenuShareTimeline", "onMenuShareAppMessage"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 	});
 	
@@ -62,7 +62,7 @@ wx.config({
 
 <body>
 
-<a id="BTN" onclick="clickFun()" style="display:black;width:200px;height:200px;line-height:200px;color:#fff;background-color:#ffb928;text-align:center">点击</a>
+<a id="BTN" onclick="shareTimeline()" style="display:black;width:200px;height:200px;line-height:200px;color:#fff;background-color:#ffb928;text-align:center">点击</a>
 </body>
 </html>
 
