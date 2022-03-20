@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2022-03-20T03:32:31.002Z</updated>
+  <updated>2022-03-20T15:33:04.391Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>android NDK引入第三方so库及头文件</title>
+    <link href="http://yoursite.com/2022/03/20/15%E3%80%81android%20NDK%E5%BC%95%E5%85%A5%E7%AC%AC%E4%B8%89%E6%96%B9so%E5%BA%93%E5%8F%8A%E5%A4%B4%E6%96%87%E4%BB%B6/"/>
+    <id>http://yoursite.com/2022/03/20/15、android NDK引入第三方so库及头文件/</id>
+    <published>2022-03-20T07:21:00.000Z</published>
+    <updated>2022-03-20T15:33:04.391Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>主要讲述在android中调用一个没有jni接口的so动态库。由于第三方库没有jni接口，只能通过c++调用。我们用NDK创建自己的so库，并在自己的so库中调用第三方库中的接口。</p><h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ol><li>创建other.so库当作第三方的so库。</li><li>创建link_other.so库来调用other.so,并提供jni接口。</li><li>创建普通项目测试。<br>项目地址 github：<a href="https://github.com/lijmin/SO2NDK" target="_blank" rel="noopener">https://github.com/lijmin/SO2NDK</a></li></ol><a id="more"></a><h3 id="创建other-so"><a href="#创建other-so" class="headerlink" title="创建other.so"></a>创建other.so</h3><p>在android studio中创建native c++项目<br>File-&gt;New-&gt;New Project-&gt;Native C++<br><img src="https://lijmin.github.io/00_blogImg/img_blog15_01.png" alt=""><br>在cpp目录下创建other的C++类，并添加一个add方法<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"other.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> other::add(<span class="keyword">int</span> a, <span class="keyword">int</span> b) &#123;</span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>在CMakeLists.txt里面加入other.cpp<br><img src="https://lijmin.github.io/00_blogImg/img_blog15_02.png" alt=""><br>点击运行,在app-&gt;build-&gt;intermediates-&gt;cmake-&gt;debug-&gt;obj-&gt;x86目录下可看到生成到libother.so<br>将libother.so、other.h文件拷贝出来备用。</p><h3 id="创建link-other-so"><a href="#创建link-other-so" class="headerlink" title="创建link_other.so"></a>创建link_other.so</h3><p>直接在第一个项目上面改<br>把libother.so加入到libs目录<br>创建include目录并把other.h的头文件放到里面<br><img src="https://lijmin.github.io/00_blogImg/img_blog15_03.png" alt=""><br>修改CMakeList.txt，加入other.so<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置so库路径</span></span><br><span class="line">set(my_lib_path $&#123;CMAKE_SOURCE_DIR&#125;/../../../libs)</span><br><span class="line">add_library(other SHARED IMPORTED)</span><br><span class="line">set_target_properties(other PROPERTIES IMPORTED_LOCATION $&#123;my_lib_path&#125;/$&#123;ANDROID_ABI&#125;/libother.so)</span><br><span class="line">include_directories($&#123;CMAKE_SOURCE_DIR&#125;/<span class="keyword">include</span>/)</span><br><span class="line"></span><br><span class="line">add_library(link-other SHARED native-<span class="class"><span class="keyword">lib</span>.<span class="title">cpp</span>)</span></span><br><span class="line">find_library(log-<span class="class"><span class="keyword">lib</span> <span class="title">log</span>)</span></span><br><span class="line">target_link_libraries(link-other other $&#123;log-<span class="class"><span class="keyword">lib</span>&#125;)</span></span><br></pre></td></tr></table></figure></p><p>创建NDK方法，来调用other.so里面到add方法。<br><img src="https://lijmin.github.io/00_blogImg/img_blog15_04.png" alt=""><br><img src="https://lijmin.github.io/00_blogImg/img_blog15_05.png" alt=""><br>同样点击运行,在app-&gt;build-&gt;intermediates-&gt;cmake-&gt;debug-&gt;obj-&gt;x86目录下可看到生成了两个so文件。<br>这个时候在当前项目内是无法运行的，需要把两个so拿到测试项目运行。</p><h2 id="测试link-other-so"><a href="#测试link-other-so" class="headerlink" title="测试link-other.so"></a>测试link-other.so</h2><p>同样将两个so加入到新项目的libs<br>在app的build.gradle加入编译路径<br><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">android&#123;</span><br><span class="line">    ...</span><br><span class="line">    sourceSets &#123;</span><br><span class="line">        main &#123;</span><br><span class="line">            jniLibs.srcDirs = [<span class="string">'libs'</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>创建与link-other.so相同包名类名的方法，并加载动态库。<br><img src="https://lijmin.github.io/00_blogImg/img_blog15_06.png" alt=""><br>在MainActivity里面调用native方法<br><img src="https://lijmin.github.io/00_blogImg/img_blog15_07.png" alt=""><br><img src="https://lijmin.github.io/00_blogImg/img_blog15_08.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      在android中调用一个没有jni接口的so动态库。
+    
+    </summary>
+    
+    
+      <category term="android" scheme="http://yoursite.com/tags/android/"/>
+    
+      <category term="NDK" scheme="http://yoursite.com/tags/NDK/"/>
+    
+      <category term="so" scheme="http://yoursite.com/tags/so/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mac搭建php开发环境</title>
+    <link href="http://yoursite.com/2020/02/20/14%E3%80%81mac%E6%90%AD%E5%BB%BAphp%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
+    <id>http://yoursite.com/2020/02/20/14、mac搭建php开发环境/</id>
+    <published>2020-02-20T12:00:00.000Z</published>
+    <updated>2022-03-20T15:19:52.750Z</updated>
+    
+    <content type="html"><![CDATA[<p>主要记录apache、php5.6、mysql5.7、eclipse在mac上的配置。</p><h3 id="apache"><a href="#apache" class="headerlink" title="apache"></a>apache</h3><p>  使用系统自带apache，修改网站路径，开启php模块。<br>  进入目录<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> <span class="string">/etc/apache2/</span></span><br></pre></td></tr></table></figure></p><p>备份并编辑httpd.conf<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp httpd<span class="selector-class">.conf</span> httpd<span class="selector-class">.conf</span><span class="selector-class">.bak</span></span><br><span class="line">sudo vim httpd.conf</span><br></pre></td></tr></table></figure></p><a id="more"></a><p>搜索DocumentRoot，并修改路径为你的网站根目录<br><img src="https://lijmin.github.io/00_blogImg/img_blog14_01.png" alt=""><br>搜索php，把php的加载模块打开。</p><p>sudo apachectl stop 停止<br>sudo apachectl start 启动</p><h3 id="php"><a href="#php" class="headerlink" title="php"></a>php</h3><p>  通过命令安装<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s <span class="string">http:</span><span class="comment">//php-osx.liip.ch/install.sh | bash -s 5.6</span></span><br></pre></td></tr></table></figure></p><h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><p>  mysql启动<br>  sudo launchctl unload -w /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist</p><p>2020-02-18T06:34:37.036622Z 1 [Note] A temporary password is generated for root@localhost: JeKjyZri8o)?</p><p>If you lose this password, please consult the section How to Reset the Root Password in the MySQL reference manual.</p><p>eclips</p><p>linux<br>修改目录权限<br>sudo chmod -R 777 xxx/</p>]]></content>
+    
+    <summary type="html">
+    
+      ionic4+angular7+cordova上传图片
+    
+    </summary>
+    
+    
+      <category term="php" scheme="http://yoursite.com/tags/php/"/>
+    
+      <category term="mysql" scheme="http://yoursite.com/tags/mysql/"/>
+    
+      <category term="apache" scheme="http://yoursite.com/tags/apache/"/>
+    
+  </entry>
   
   <entry>
     <title>ionic4+angular7+cordova上传图片</title>
@@ -73,29 +121,6 @@
     
     
       <category term="android" scheme="http://yoursite.com/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://yoursite.com/2018/03/11/14%E3%80%81mac%E6%90%AD%E5%BB%BAphp%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
-    <id>http://yoursite.com/2018/03/11/14、mac搭建php开发环境/</id>
-    <published>2018-03-11T13:15:33.000Z</published>
-    <updated>2022-03-20T04:03:46.876Z</updated>
-    
-    <content type="html"><![CDATA[<p>主要记录apache、php5.6、mysql5.7、eclipse在mac上的配置。</p><ul><li>apache<br>使用系统自带apache，修改网站路径，开启php模块。<br>进入目录<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> <span class="string">/etc/apache2/</span></span><br></pre></td></tr></table></figure></li></ul><p>备份并编辑httpd.conf<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp httpd<span class="selector-class">.conf</span> httpd<span class="selector-class">.conf</span><span class="selector-class">.bak</span></span><br><span class="line">sudo vim httpd.conf</span><br></pre></td></tr></table></figure></p><p>搜索DocumentRoot，并修改路径为你的网站根目录<br><img src="https://lijmin.github.io/00_blogImg/img_blog14_01.png" alt=""><br>搜索php，把php的加载模块打开。</p><p>sudo apachectl stop 停止<br>sudo apachectl start 启动</p><ul><li><p>php<br>通过命令安装</p><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s <span class="string">http:</span><span class="comment">//php-osx.liip.ch/install.sh | bash -s 5.6</span></span><br></pre></td></tr></table></figure></li><li><p>mysql<br>mysql启动<br>sudo launchctl unload -w /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist</p></li></ul><p>2020-02-18T06:34:37.036622Z 1 [Note] A temporary password is generated for root@localhost: JeKjyZri8o)?</p><p>If you lose this password, please consult the section How to Reset the Root Password in the MySQL reference manual.</p><p>eclips</p><p>linux<br>修改目录权限<br>sudo chmod -R 777 xxx/</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;主要记录apache、php5.6、mysql5.7、eclipse在mac上的配置。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;apache&lt;br&gt;使用系统自带apache，修改网站路径，开启php模块。&lt;br&gt;进入目录&lt;figure class=&quot;highlight jboss-cli
-      
-    
-    </summary>
-    
     
   </entry>
   
