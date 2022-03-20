@@ -15,15 +15,15 @@
 <meta property="og:url" content="http://yoursite.com/2019/06/08/12、ionic4入门/index.html">
 <meta property="og:site_name" content="垚淼">
 <meta property="og:description" content="ionic4+angular7+cordova开发入门">
-<meta property="og:image" content="file:///Users/lijiamin/Library/Application%20Support/xiangxuema/xxm/1/img1559572248645.png">
-<meta property="og:image" content="file:///Users/lijiamin/Library/Application%20Support/xiangxuema/xxm/1/img1559572896683.png">
-<meta property="og:image" content="file:///Users/lijiamin/Library/Application%20Support/xiangxuema/xxm/1/img1559892197231.png">
-<meta property="og:image" content="file:///Users/lijiamin/Library/Application%20Support/xiangxuema/xxm/1/img1559930665635.png">
-<meta property="og:updated_time" content="2019-06-07T18:28:38.237Z">
+<meta property="og:image" content="https://lijmin.github.io/00_blogImg/img_blog12_01.png">
+<meta property="og:image" content="https://lijmin.github.io/00_blogImg/img_blog12_02.png">
+<meta property="og:image" content="https://lijmin.github.io/00_blogImg/img_blog12_03.png">
+<meta property="og:image" content="https://lijmin.github.io/00_blogImg/img_blog12_04.png">
+<meta property="og:updated_time" content="2022-03-20T03:32:16.046Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ionic4入门">
 <meta name="twitter:description" content="ionic4+angular7+cordova开发入门">
-<meta name="twitter:image" content="file:///Users/lijiamin/Library/Application%20Support/xiangxuema/xxm/1/img1559572248645.png">
+<meta name="twitter:image" content="https://lijmin.github.io/00_blogImg/img_blog12_01.png">
   
     <link rel="alternative" href="/atom.xml" title="垚淼" type="application/atom+xml">
   
@@ -52,7 +52,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="https://github.com/jimmylee89/BlogBackup/blob/master/blog_img/avatar.png?raw=true" class="js-avatar">
+			<img src="http://image.ljmin.com/avatar.png" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">垚淼</a></h1>
@@ -106,7 +106,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="https://github.com/jimmylee89/BlogBackup/blob/master/blog_img/avatar.png?raw=true" class="js-avatar">
+				<img src="http://image.ljmin.com/avatar.png" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">垚淼</h1>
@@ -182,22 +182,22 @@
 <li>查看安装情况<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sh-3</span><span class="selector-class">.2</span># <span class="selector-tag">node</span> <span class="selector-tag">--version</span></span><br><span class="line"><span class="selector-tag">v10</span><span class="selector-class">.14</span><span class="selector-class">.2</span></span><br><span class="line"><span class="selector-tag">sh-3</span><span class="selector-class">.2</span># <span class="selector-tag">ionic</span> <span class="selector-tag">--version</span></span><br><span class="line">5<span class="selector-class">.0</span><span class="selector-class">.0</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>输出了版本好说明安装成功了。</p>
+<p>输出了版本好说明安装成功了。<br><a id="more"></a></p>
 <h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><ol>
 <li>创建myApp项目 <code>ionic start myApp tabs</code></li>
-<li>进入myApp目录，运行项目 <code>cd myApp</code>、<code>ionic serve</code><br>这时可能会遇到问题<br><code>Error: Cannot find module &#39;node-sass’</code><br>安装相应的node-sass模块就可以了。<br><code>npm install node-sass --save-dev</code><br>没问题后可在浏览器看到项目运行起来了<br><img id="img1559572248645" src="file:///Users/lijiamin/Library/Application Support/xiangxuema/xxm/1/img1559572248645.png" data-cnblogs="https://img2018.cnblogs.com/other/337382/201906/337382-20190608020950026-2137903386.png" data-csdn="https://img-blog.csdnimg.cn/20190608021253183.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqbWluMDIwNA==,size_16,color_FFFFFF,t_70"></li>
+<li>进入myApp目录，运行项目 <code>cd myApp</code>、<code>ionic serve</code><br>这时可能会遇到问题<br><code>Error: Cannot find module &#39;node-sass’</code><br>安装相应的node-sass模块就可以了。<br><code>npm install node-sass --save-dev</code><br>没问题后可在浏览器看到项目运行起来了<br><img src="https://lijmin.github.io/00_blogImg/img_blog12_01.png" alt=""></li>
 </ol>
 <h2 id="添加ios平台"><a href="#添加ios平台" class="headerlink" title="添加ios平台"></a>添加ios平台</h2><ol>
 <li>添加cordova插件 <code>npm i -g cordova</code></li>
 <li>添加ios平台 <code>ionic cordova platform add ios</code></li>
 <li>准备ios代码 <code>ionic cordova prepare ios</code>，以后都只需要这一步就可以在xcode上运行。</li>
-<li>将生成的代码在xcode上运行<br><img id="img1559572896683" src="file:///Users/lijiamin/Library/Application Support/xiangxuema/xxm/1/img1559572896683.png" data-cnblogs="https://img2018.cnblogs.com/other/337382/201906/337382-20190608020950160-1597190689.png" data-csdn="https://img-blog.csdnimg.cn/20190608021255268.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqbWluMDIwNA==,size_16,color_FFFFFF,t_70"></li>
-<li>ios平台运行结果<br><img id="img1559892197231" src="file:///Users/lijiamin/Library/Application Support/xiangxuema/xxm/1/img1559892197231.png" data-cnblogs="https://img2018.cnblogs.com/other/337382/201906/337382-20190608020950128-1896512759.png" data-csdn="https://img-blog.csdnimg.cn/20190608021255588.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqbWluMDIwNA==,size_16,color_FFFFFF,t_70"></li>
+<li>将生成的代码在xcode上运行<br><img src="https://lijmin.github.io/00_blogImg/img_blog12_02.png" alt=""></li>
+<li>ios平台运行结果<br><img src="https://lijmin.github.io/00_blogImg/img_blog12_03.png" alt=""></li>
 </ol>
 <h2 id="添加android平台"><a href="#添加android平台" class="headerlink" title="添加android平台"></a>添加android平台</h2><ol>
 <li>添加步骤同ios <code>ionic cordova platform add android</code><br>如遇到 <code>404 Not Found: amdroid@latest</code><br>先更新版本在尝试<br><code>ionic cordova platform rm android</code><br><code>ionic cordova platform update android</code><br><code>ionic cordova platform add android</code></li>
 <li>在androidStudio运行android<br>可能会遇到构建异常<br><code>The minSdk version should not be declared in the android manifest file. You can move the version from the manifest to the defaultConfig in the build.gradle file.</code><br>在manifest把minSdkVersion删掉即可，目录是：<br>CordovaLib-&gt;AndroidManifest.xml<br>app-&gt;src-&gt;main-&gt;AndroidManifest.xml<br><code>&lt;uses-sdk android:minsdkversion=&quot;19&quot;&gt;</code></li>
-<li>android平台也运行起来了<br><img id="img1559930665635" src="file:///Users/lijiamin/Library/Application Support/xiangxuema/xxm/1/img1559930665635.png" data-cnblogs="https://img2018.cnblogs.com/other/337382/201906/337382-20190608020949569-1802063969.png" data-csdn="https://img-blog.csdnimg.cn/20190608021255593.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqbWluMDIwNA==,size_16,color_FFFFFF,t_70"></li>
+<li>android平台也运行起来了<br><img src="https://lijmin.github.io/00_blogImg/img_blog12_04.png" alt=""></li>
 </ol>
 
       
@@ -216,13 +216,13 @@
                   <div class="reward-box">
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="https://raw.githubusercontent.com/jimmylee89/BlogBackup/master/blog_img/img_pay_ali.JPG">
+                      <img class="reward-img" src="http://image.ljmin.com/img_pay_ali.jpeg">
                       <span class="reward-type">支付宝</span>
                     </div>
                     
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="https://raw.githubusercontent.com/jimmylee89/BlogBackup/master/blog_img/img_pay_wechat.JPG">
+                      <img class="reward-img" src="http://image.ljmin.com/img_pay_wechat.JPG">
                       <span class="reward-type">微信</span>
                     </div>
                     
@@ -313,6 +313,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2019/06/18/13、ionic4+angular7+cordova上传图片/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          ionic4+angular7+cordova上传图片
+        
+      </div>
+    </a>
+  
   
     <a href="/2018/11/02/11、android日历/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">android日历</div>
@@ -368,7 +377,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 垚淼
+    		&copy; 2022 垚淼
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -447,15 +456,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ionic4</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">windows</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -472,10 +485,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ionic4</a>
               </li>
             
             <div class="clearfix"></div>
