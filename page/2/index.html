@@ -45,7 +45,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="https://github.com/jimmylee89/BlogBackup/blob/master/blog_img/avatar.png?raw=true" class="js-avatar">
+			<img src="http://image.ljmin.com/avatar.png" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">垚淼</a></h1>
@@ -99,7 +99,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="https://github.com/jimmylee89/BlogBackup/blob/master/blog_img/avatar.png?raw=true" class="js-avatar">
+				<img src="http://image.ljmin.com/avatar.png" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">垚淼</h1>
@@ -149,6 +149,381 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-3、移动硬盘装win7" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/08/08/3、移动硬盘装win7/">移动硬盘装win7</a>
+    </h1>
+  
+
+        
+        <a href="/2012/08/08/3、移动硬盘装win7/" class="archive-article-date">
+  	<time datetime="2012-08-07T16:19:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-08-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><span style="font-size: 16px;">总结一下用移动硬盘装win7的方法</span></p>
+<p><span style="font-size: 16px;">1、给移动硬盘分区（分区是为了方便管理）</span></p>
+<p><span style="font-size: 16px;">　　我是在win7系统上分区的。控制面板–&gt;系统与安全–&gt;创建并格式化硬盘分区，进去之后选择你的移动硬盘–&gt;删除卷（会丢失数据的，建议用分区工具，我的移动硬盘是空的就无所谓了）–&gt;在下面找到未分配区–&gt;右击–&gt;新建分区（输入你要划分的大小就可以了，这里新建的都是主分区，主分区只有3个，如果需要划分多个，就在主分区上扩展卷）</span></p>
+<p><span style="font-size: 16px;">右击你要放系统的分区–&gt;将分区标记为活动分区（设置分区为可引导）</span></p>
+        
+          <a class="article-more-a" href="/2012/08/08/3、移动硬盘装win7/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">windows</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2012/08/08/3、移动硬盘装win7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2、网页中加入百度地图（带地区搜索）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/07/27/2、网页中加入百度地图（带地区搜索）/">网页中加入百度地图（带地区搜索）</a>
+    </h1>
+  
+
+        
+        <a href="/2012/07/27/2、网页中加入百度地图（带地区搜索）/" class="archive-article-date">
+  	<time datetime="2012-07-27T13:06:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-07-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&nbsp;先看效果：</p>
+<!--引用百度地图API-->
+<p><style>&lt;!–<br>.iw_poi_title {<br>    color: #CC5522;<br>    font-size: 14px;<br>    font-weight: bold;<br>    overflow: hidden;<br>    padding-right: 13px;<br>    white-space: nowrap<br>}</p>
+<p>.iw_poi_content {<br>    font: 12px arial, sans-serif;<br>    overflow: visible;<br>    padding-top: 4px;<br>    white-space: -moz-pre-wrap;<br>    word-wrap: break-word<br>}<br>–&gt;</style></p>
+<script type="text/javascript" src="http://api.map.baidu.com/api?key=&amp;v=1.1&amp;services=true">// <![CDATA[
+
+// ]]&gt;</script>
+<!--百度地图容器-->
+<div id="dituContent" style="width: 600px; height: 450px; border: #ccc solid 1px; margin-bottom: 20px;">&nbsp;</div>
+<div><input id="input" type="text"> <input onclick="searchMap();" type="button" value="搜索地图"></div>
+<div>&nbsp;</div>
+<div>实现步骤：</div>
+<div>1、到百度aip示例学习获取代码&nbsp;[http://api.map.baidu.com/lbsapi/creatmap/index.html](http://api.map.baidu.com/lbsapi/creatmap/index.html)</div>
+<div>&nbsp;</div>
+<div>2、代码注释很详细，其中创建地图时是通过经纬度定位的。修改一下，我们通过传参的方式。</div>
+<div>
+<div class="cnblogs_code">
+<pre><span style="color: #008000;">//</span><span style="color: #008000;">创建地图函数：</span>
+<span style="color: #0000ff;">function</span><span style="color: #000000;"> createMap(x, y) {
+    </span><span style="color: #0000ff;">var</span> map = <span style="color: #0000ff;">new</span> BMap.Map("dituContent");<span style="color: #008000;">//</span><span style="color: #008000;">在百度地图容器中创建一个地图</span>
+    <span style="color: #0000ff;">var</span> point = <span style="color: #0000ff;">new</span> BMap.Point(x, y);<span style="color: #008000;">//</span><span style="color: #008000;">定义一个中心点坐标</span>
+    map.centerAndZoom(point, 12);<span style="color: #008000;">//</span><span style="color: #008000;">设定地图的中心点和坐标并将地图显示在地图容器中</span>
+    window.map = map;<span style="color: #008000;">//</span><span style="color: #008000;">将map变量存储在全局</span>
+}</pre>
+</div>
+
+3、添加文本框、按钮，点击按钮的时候把文本框的内容传给javascript。
+
+<div class="cnblogs_code">
+<pre>&lt;div&gt;
+    &lt;input type="text" id="input" /&gt;
+    &lt;input type="button" onclick="searchMap();" value="搜索地图" /&gt;
+&lt;/div&gt;</pre>
+</div>
+
+4、javascript将地区转化为经纬度，重新创建地图。
+
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">function</span><span style="color: #000000;"> searchMap() {
+    </span><span style="color: #0000ff;">var</span> area = document.getElementById("input").value; <span style="color: #008000;">//</span><span style="color: #008000;">得到地区</span>
+    <span style="color: #0000ff;">var</span> ls = <span style="color: #0000ff;">new</span><span style="color: #000000;"> BMap.LocalSearch(map);
+    ls.setSearchCompleteCallback(</span><span style="color: #0000ff;">function</span><span style="color: #000000;">(rs) {
+        </span><span style="color: #0000ff;">if</span> (ls.getStatus() ==<span style="color: #000000;"> BMAP_STATUS_SUCCESS) {
+            </span><span style="color: #0000ff;">var</span> poi = rs.getPoi(0<span style="color: #000000;">);
+            </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (poi) {
+                createMap(poi.point.lng, poi.point.lat);</span><span style="color: #008000;">//</span><span style="color: #008000;">创建地图(经度poi.point.lng,纬度poi.point.lat)</span>
+                setMapEvent();<span style="color: #008000;">//</span><span style="color: #008000;">设置地图事件</span>
+                addMapControl();<span style="color: #008000;">//</span><span style="color: #008000;">向地图添加控件</span>
+<span style="color: #000000;">            }
+        }
+    });
+    ls.search(area);
+}</span></pre>
+</div>
+
+&nbsp;
+
+完整代码:
+
+<div class="cnblogs_code">
+<pre>&lt;!--引用百度地图API--&gt;
+&lt;style type="text/css"&gt;<span style="color: #000000;">
+.iw_poi_title {
+    color: #CC5522;
+    font</span>-<span style="color: #000000;">size: 14px;
+    font</span>-<span style="color: #000000;">weight: bold;
+    overflow: hidden;
+    padding</span>-<span style="color: #000000;">right: 13px;
+    white</span>-<span style="color: #000000;">space: nowrap
+}
+
+.iw_poi_content {
+    font: 12px arial, sans</span>-<span style="color: #000000;">serif;
+    overflow: visible;
+    padding</span>-<span style="color: #000000;">top: 4px;
+    white</span>-space: -moz-pre-<span style="color: #000000;">wrap;
+    word</span>-wrap: <span style="color: #0000ff;">break</span>-<span style="color: #000000;">word
+}
+</span>&lt;/style&gt;
+&lt;script type="text/javascript"<span style="color: #000000;">
+    src</span>="http://api.map.baidu.com/api?key=&amp;v=1.1&amp;services=true"&gt;
+&lt;/script&gt;
+
+&lt;!--百度地图容器--&gt;
+&lt;<span style="color: #000000;">div
+    style</span>="width: 600px; height: 450px; border: #ccc solid 1px; margin-bottom: 20px;"<span style="color: #000000;">
+    id</span>="dituContent"&gt;&lt;/div&gt;
+&lt;div&gt;
+    &lt;input type="text" id="input" /&gt;
+    &lt;input type="button" onclick="searchMap();" value="搜索地图" /&gt;
+&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
+<span style="color: #008000;">//</span><span style="color: #008000;">创建和初始化地图函数：</span>
+<span style="color: #0000ff;">function</span><span style="color: #000000;"> initMap() {
+    createMap(</span>114.025974, 22.546054);<span style="color: #008000;">//</span><span style="color: #008000;">创建地图</span>
+    setMapEvent();<span style="color: #008000;">//</span><span style="color: #008000;">设置地图事件</span>
+    addMapControl();<span style="color: #008000;">//</span><span style="color: #008000;">向地图添加控件</span>
+<span style="color: #000000;">}
+
+</span><span style="color: #008000;">//</span><span style="color: #008000;">地图搜索</span>
+<span style="color: #0000ff;">function</span><span style="color: #000000;"> searchMap() {
+    </span><span style="color: #0000ff;">var</span> area = document.getElementById("input").value; <span style="color: #008000;">//</span><span style="color: #008000;">得到地区</span>
+    <span style="color: #0000ff;">var</span> ls = <span style="color: #0000ff;">new</span><span style="color: #000000;"> BMap.LocalSearch(map);
+    ls.setSearchCompleteCallback(</span><span style="color: #0000ff;">function</span><span style="color: #000000;">(rs) {
+        </span><span style="color: #0000ff;">if</span> (ls.getStatus() ==<span style="color: #000000;"> BMAP_STATUS_SUCCESS) {
+            </span><span style="color: #0000ff;">var</span> poi = rs.getPoi(0<span style="color: #000000;">);
+            </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (poi) {
+                createMap(poi.point.lng, poi.point.lat);</span><span style="color: #008000;">//</span><span style="color: #008000;">创建地图(经度poi.point.lng,纬度poi.point.lat)</span>
+                setMapEvent();<span style="color: #008000;">//</span><span style="color: #008000;">设置地图事件</span>
+                addMapControl();<span style="color: #008000;">//</span><span style="color: #008000;">向地图添加控件</span>
+<span style="color: #000000;">            }
+        }
+    });
+    ls.search(area);
+}
+
+</span><span style="color: #008000;">//</span><span style="color: #008000;">创建地图函数：</span>
+<span style="color: #0000ff;">function</span><span style="color: #000000;"> createMap(x, y) {
+    </span><span style="color: #0000ff;">var</span> map = <span style="color: #0000ff;">new</span> BMap.Map("dituContent");<span style="color: #008000;">//</span><span style="color: #008000;">在百度地图容器中创建一个地图</span>
+    <span style="color: #0000ff;">var</span> point = <span style="color: #0000ff;">new</span> BMap.Point(x, y);<span style="color: #008000;">//</span><span style="color: #008000;">定义一个中心点坐标</span>
+    map.centerAndZoom(point, 12);<span style="color: #008000;">//</span><span style="color: #008000;">设定地图的中心点和坐标并将地图显示在地图容器中</span>
+    window.map = map;<span style="color: #008000;">//</span><span style="color: #008000;">将map变量存储在全局</span>
+<span style="color: #000000;">}
+
+</span><span style="color: #008000;">//</span><span style="color: #008000;">地图事件设置函数：</span>
+<span style="color: #0000ff;">function</span><span style="color: #000000;"> setMapEvent() {
+    map.enableDragging();</span><span style="color: #008000;">//</span><span style="color: #008000;">启用地图拖拽事件，默认启用(可不写)</span>
+    map.enableScrollWheelZoom();<span style="color: #008000;">//</span><span style="color: #008000;">启用地图滚轮放大缩小</span>
+    map.enableDoubleClickZoom();<span style="color: #008000;">//</span><span style="color: #008000;">启用鼠标双击放大，默认启用(可不写)</span>
+    map.enableKeyboard();<span style="color: #008000;">//</span><span style="color: #008000;">启用键盘上下左右键移动地图</span>
+<span style="color: #000000;">}
+
+</span><span style="color: #008000;">//</span><span style="color: #008000;">地图控件添加函数：</span>
+<span style="color: #0000ff;">function</span><span style="color: #000000;"> addMapControl() {
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">向地图中添加缩放控件</span>
+    <span style="color: #0000ff;">var</span> ctrl_nav = <span style="color: #0000ff;">new</span><span style="color: #000000;"> BMap.NavigationControl( {
+        anchor : BMAP_ANCHOR_TOP_LEFT,
+        type : BMAP_NAVIGATION_CONTROL_LARGE
+    });
+    map.addControl(ctrl_nav);
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">向地图中添加缩略图控件</span>
+    <span style="color: #0000ff;">var</span> ctrl_ove = <span style="color: #0000ff;">new</span><span style="color: #000000;"> BMap.OverviewMapControl( {
+        anchor : BMAP_ANCHOR_BOTTOM_RIGHT,
+        isOpen : </span>1<span style="color: #000000;">
+    });
+    map.addControl(ctrl_ove);
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">向地图中添加比例尺控件</span>
+    <span style="color: #0000ff;">var</span> ctrl_sca = <span style="color: #0000ff;">new</span><span style="color: #000000;"> BMap.ScaleControl( {
+        anchor : BMAP_ANCHOR_BOTTOM_LEFT
+    });
+    map.addControl(ctrl_sca);
+}
+
+initMap();</span><span style="color: #008000;">//</span><span style="color: #008000;">创建和初始化地图</span>
+&lt;/script&gt;</pre>
+</div>
+
+&nbsp;
+
+</div>
+<div>&nbsp;</div>
+<script type="text/javascript">// <![CDATA[
+//创建和初始化地图函数：
+function initMap() {
+    createMap(114.025974, 22.546054);//创建地图
+    setMapEvent();//设置地图事件
+    addMapControl();//向地图添加控件
+}
+
+function searchMap() {
+    var area = document.getElementById("input").value;
+    var ls = new BMap.LocalSearch(map);
+    ls.setSearchCompleteCallback(function(rs) {
+        if (ls.getStatus() == BMAP_STATUS_SUCCESS) {
+            var poi = rs.getPoi(0);
+            if (poi) {
+                createMap(poi.point.lng, poi.point.lat);//创建地图
+            setMapEvent();//设置地图事件
+            addMapControl();//向地图添加控件
+        }
+    }
+})    ;
+    ls.search(area);
+}
+
+//创建地图函数：
+function createMap(x, y) {
+    var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
+    var point = new BMap.Point(x, y);//定义一个中心点坐标
+    map.centerAndZoom(point, 12);//设定地图的中心点和坐标并将地图显示在地图容器中
+    window.map = map;//将map变量存储在全局
+}
+
+//地图事件设置函数：
+function setMapEvent() {
+    map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+    map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+    map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+    map.enableKeyboard();//启用键盘上下左右键移动地图
+}
+
+//地图控件添加函数：
+function addMapControl() {
+    //向地图中添加缩放控件
+    var ctrl_nav = new BMap.NavigationControl( {
+        anchor : BMAP_ANCHOR_TOP_LEFT,
+        type : BMAP_NAVIGATION_CONTROL_LARGE
+    });
+    map.addControl(ctrl_nav);
+    //向地图中添加缩略图控件
+    var ctrl_ove = new BMap.OverviewMapControl( {
+        anchor : BMAP_ANCHOR_BOTTOM_RIGHT,
+        isOpen : 1
+    });
+    map.addControl(ctrl_ove);
+    //向地图中添加比例尺控件
+    var ctrl_sca = new BMap.ScaleControl( {
+        anchor : BMAP_ANCHOR_BOTTOM_LEFT
+    });
+    map.addControl(ctrl_sca);
+}
+
+initMap();//创建和初始化地图
+// ]]&gt;</script>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">百度地图</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2012/07/27/2、网页中加入百度地图（带地区搜索）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-1、博客园评论（回复、引用）的实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -261,7 +636,7 @@ document.getElementById('reply_text').value=_abc
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 垚淼
+    		&copy; 2019 垚淼
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -340,23 +715,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">百度地图</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">windows</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -365,6 +732,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">gradle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">百度地图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ionic4</a>
               </li>
             
             <div class="clearfix"></div>
