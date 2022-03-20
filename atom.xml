@@ -77,6 +77,29 @@
   </entry>
   
   <entry>
+    <title></title>
+    <link href="http://yoursite.com/2018/03/11/14%E3%80%81mac%E6%90%AD%E5%BB%BAphp%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
+    <id>http://yoursite.com/2018/03/11/14、mac搭建php开发环境/</id>
+    <published>2018-03-11T13:15:33.000Z</published>
+    <updated>2022-03-20T04:03:46.876Z</updated>
+    
+    <content type="html"><![CDATA[<p>主要记录apache、php5.6、mysql5.7、eclipse在mac上的配置。</p><ul><li>apache<br>使用系统自带apache，修改网站路径，开启php模块。<br>进入目录<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> <span class="string">/etc/apache2/</span></span><br></pre></td></tr></table></figure></li></ul><p>备份并编辑httpd.conf<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp httpd<span class="selector-class">.conf</span> httpd<span class="selector-class">.conf</span><span class="selector-class">.bak</span></span><br><span class="line">sudo vim httpd.conf</span><br></pre></td></tr></table></figure></p><p>搜索DocumentRoot，并修改路径为你的网站根目录<br><img src="https://lijmin.github.io/00_blogImg/img_blog14_01.png" alt=""><br>搜索php，把php的加载模块打开。</p><p>sudo apachectl stop 停止<br>sudo apachectl start 启动</p><ul><li><p>php<br>通过命令安装</p><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s <span class="string">http:</span><span class="comment">//php-osx.liip.ch/install.sh | bash -s 5.6</span></span><br></pre></td></tr></table></figure></li><li><p>mysql<br>mysql启动<br>sudo launchctl unload -w /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist</p></li></ul><p>2020-02-18T06:34:37.036622Z 1 [Note] A temporary password is generated for root@localhost: JeKjyZri8o)?</p><p>If you lose this password, please consult the section How to Reset the Root Password in the MySQL reference manual.</p><p>eclips</p><p>linux<br>修改目录权限<br>sudo chmod -R 777 xxx/</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;主要记录apache、php5.6、mysql5.7、eclipse在mac上的配置。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;apache&lt;br&gt;使用系统自带apache，修改网站路径，开启php模块。&lt;br&gt;进入目录&lt;figure class=&quot;highlight jboss-cli
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>android饼状图</title>
     <link href="http://yoursite.com/2018/03/11/10%E3%80%81android%E9%A5%BC%E7%8A%B6%E5%9B%BE/"/>
     <id>http://yoursite.com/2018/03/11/10、android饼状图/</id>

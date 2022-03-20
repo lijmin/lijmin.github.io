@@ -45,7 +45,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="http://image.ljmin.com/avatar.png" class="js-avatar">
+			<img src="https://lijmin.github.io/00_blogImg/avatar.png" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">垚淼</a></h1>
@@ -99,7 +99,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="http://image.ljmin.com/avatar.png" class="js-avatar">
+				<img src="https://lijmin.github.io/00_blogImg/avatar.png" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">垚淼</h1>
@@ -173,7 +173,7 @@
         <h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><p>安装插件Image Picker<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ionic cordova plugin add cordova-plugin-telerik-imagepicker</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install @ionic-native/image-picker</span></span><br></pre></td></tr></table></figure></p>
 <p>安装插件File Transfer<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ionic cordova plugin add cordova-plugin-<span class="keyword">file</span>-<span class="built_in">transfer</span></span><br><span class="line">$ npm install @ionic-native/<span class="keyword">file</span>-<span class="built_in">transfer</span></span><br></pre></td></tr></table></figure></p>
         
-          <a class="article-more-a" href="/2019/06/18/13、ionic4+angular7+cordova上传图片/#more">more >></a>
+          <a class="article-more-a" href="/2019/06/18/13、ionic4+angular7+cordova上传图片/#more">more` >></a>
         
       
 
@@ -256,7 +256,7 @@
 </ol>
 <p>输出了版本好说明安装成功了。<br>
         
-          <a class="article-more-a" href="/2019/06/08/12、ionic4入门/#more">more >></a>
+          <a class="article-more-a" href="/2019/06/08/12、ionic4入门/#more">more` >></a>
         
       
 
@@ -390,6 +390,72 @@
 
 
   
+    <article id="post-14、mac搭建php开发环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>主要记录apache、php5.6、mysql5.7、eclipse在mac上的配置。</p>
+<ul>
+<li>apache<br>使用系统自带apache，修改网站路径，开启php模块。<br>进入目录<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> <span class="string">/etc/apache2/</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>备份并编辑httpd.conf<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp httpd<span class="selector-class">.conf</span> httpd<span class="selector-class">.conf</span><span class="selector-class">.bak</span></span><br><span class="line">sudo vim httpd.conf</span><br></pre></td></tr></table></figure></p>
+<p>搜索DocumentRoot，并修改路径为你的网站根目录<br><img src="https://lijmin.github.io/00_blogImg/img_blog14_01.png" alt=""><br>搜索php，把php的加载模块打开。</p>
+<p>sudo apachectl stop 停止<br>sudo apachectl start 启动</p>
+<ul>
+<li><p>php<br>通过命令安装</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s <span class="string">http:</span><span class="comment">//php-osx.liip.ch/install.sh | bash -s 5.6</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>mysql<br>mysql启动<br>sudo launchctl unload -w /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist</p>
+</li>
+</ul>
+<p>2020-02-18T06:34:37.036622Z 1 [Note] A temporary password is generated for root@localhost: JeKjyZri8o)?</p>
+<p>If you lose this password, please consult the section How to Reset the Root Password in the MySQL reference manual.</p>
+<p>eclips</p>
+<p>linux<br>修改目录权限<br>sudo chmod -R 777 xxx/</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/11/14、mac搭建php开发环境/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-10、android饼状图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -413,7 +479,7 @@
         <h3 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h3><p>github：<a href="https://github.com/jimmylee89/ChartView" target="_blank" rel="noopener">https://github.com/jimmylee89/ChartView</a></p>
 <h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p><img src="https://lijmin.github.io/00_blogImg/img_blog10_01.jpg" alt="效果图"><br>
         
-          <a class="article-more-a" href="/2018/03/11/10、android饼状图/#more">more >></a>
+          <a class="article-more-a" href="/2018/03/11/10、android饼状图/#more">more` >></a>
         
       
 
@@ -489,7 +555,7 @@
       
         <p>1.注册bintray账号<a href="https://bintray.com" target="_blank" rel="noopener">https://bintray.com</a><br>2.创建maven仓库<br>3.android studio创建module<br>4.项目build.gradle文件添加插件<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">        <span class="keyword">classpath</span> <span class="string">'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'</span></span><br><span class="line">        <span class="keyword">classpath</span> <span class="string">'com.github.dcendents:android-maven-gradle-plugin:1.5'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
         
-          <a class="article-more-a" href="/2018/02/02/9、android上传library到jcenter/#more">more >></a>
+          <a class="article-more-a" href="/2018/02/02/9、android上传library到jcenter/#more">more` >></a>
         
       
 
@@ -565,7 +631,7 @@
       
         <p>android studio 创建项目时，卡在building界面，如图：<br><img src="https://lijmin.github.io/00_blogImg/img_blog8_01.png" alt=""><br>可能是在更新gradle，由于网络问题下载速度很慢。如果你有足够的耐心，可以等到它更新完。或者使用梯子可以提高一点下载速度。<br>下面说的是本地更新的方法:<br>
         
-          <a class="article-more-a" href="/2018/01/27/8、AndroidStudio更新gradle/#more">more >></a>
+          <a class="article-more-a" href="/2018/01/27/8、AndroidStudio更新gradle/#more">more` >></a>
         
       
 
@@ -728,7 +794,7 @@
 <li>vim 编辑文件<br>a) i进入编辑模式<br>b) u撤销,ctrl+r反撤销<br>c) :q退出，:wq保存退出</li>
 </ol>
         
-          <a class="article-more-a" href="/2016/06/04/6、Mac配置android adb环境变量/#more">more >></a>
+          <a class="article-more-a" href="/2016/06/04/6、Mac配置android adb环境变量/#more">more` >></a>
         
       
 
@@ -807,7 +873,7 @@
 <h3 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h3><p><a href="https://nodejs.org/download/" target="_blank" rel="noopener">nodejs官网</a>下载对应的版本安装。<br>安装成功后，执行：<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">node</span> <span class="title">-v</span></span><br></pre></td></tr></table></figure></p>
 <p>可以看到版本号 v0.12.4</p>
         
-          <a class="article-more-a" href="/2015/10/01/5、Mac使用hexo搭建博客/#more">more >></a>
+          <a class="article-more-a" href="/2015/10/01/5、Mac使用hexo搭建博客/#more">more` >></a>
         
       
 
@@ -832,88 +898,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2015/10/01/5、Mac使用hexo搭建博客/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-4、Mac命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/07/4、Mac命令/">Mac控制台命令</a>
-    </h1>
-  
-
-        
-        <a href="/2015/06/07/4、Mac命令/" class="archive-article-date">
-  	<time datetime="2015-06-07T01:43:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-06-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="基本操作命令"><a href="#基本操作命令" class="headerlink" title="基本操作命令"></a>基本操作命令</h3><ul>
-<li>进入根目录 <code>cd /</code></li>
-<li>查看目录下的所有文件 <code>ls</code></li>
-<li>进入下级目录 <code>cd Users</code>（Users表示目录名）</li>
-<li>进入指定目录 <code>cd /Users/lijiamin/Library/Saved\ Searches/jimmy/swift</code>，cd ＋ 目录名，也可以cd ＋ 拖动文件夹到terminal</li>
-<li>删除文件 <code>rm document</code> （删除一个叫document的文件）</li>
-<li>显示隐藏文件 defaults write com.apple.finder AppleShowAllFiles -bool true（false为隐藏）</li>
-<li>将文件内容追加到另外一个文件上 cat /mnt/gitData/gitPub/MacLijiamin/id_rsa.pub &gt;&gt;/home/git/.ssh/authorized_keys</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mac</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/06/07/4、Mac命令/">展开全文 >></a>
         </p>
       
 
@@ -1032,15 +1016,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ionic4</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1048,7 +1028,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1057,6 +1037,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">gradle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">

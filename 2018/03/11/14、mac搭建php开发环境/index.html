@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>博客园评论（回复、引用）的实现 | 垚淼</title>
+  <title>垚淼</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用过博客园评论功能的人都知道，点击回复，光标会移到文本框里并在文本框加入@XXX；点击引用，在文本框加入@XXX跟回复的内容。 这里我想实现的就是光标移动并向textarea加入文字 第一步：点击加入文字（假设已得到用户名张三、李四） 先看效果:(点击回复)   //   一楼：张三回复二楼：李四回复">
-<meta name="keywords" content="JavaScript">
+  <meta name="description" content="主要记录apache、php5.6、mysql5.7、eclipse在mac上的配置。  apache使用系统自带apache，修改网站路径，开启php模块。进入目录1cd /etc/apache2/   备份并编辑httpd.conf12sudo cp httpd.conf httpd.conf.baksudo vim httpd.conf 搜索DocumentRoot，并修改路径为你的网站根目">
 <meta property="og:type" content="article">
-<meta property="og:title" content="博客园评论（回复、引用）的实现">
-<meta property="og:url" content="http://yoursite.com/2012/07/25/1、博客园评论（回复、引用）的实现/index.html">
+<meta property="og:title" content="垚淼">
+<meta property="og:url" content="http://yoursite.com/2018/03/11/14、mac搭建php开发环境/index.html">
 <meta property="og:site_name" content="垚淼">
-<meta property="og:description" content="使用过博客园评论功能的人都知道，点击回复，光标会移到文本框里并在文本框加入@XXX；点击引用，在文本框加入@XXX跟回复的内容。 这里我想实现的就是光标移动并向textarea加入文字 第一步：点击加入文字（假设已得到用户名张三、李四） 先看效果:(点击回复)   //   一楼：张三回复二楼：李四回复">
-<meta property="og:updated_time" content="2015-06-07T07:44:31.000Z">
+<meta property="og:description" content="主要记录apache、php5.6、mysql5.7、eclipse在mac上的配置。  apache使用系统自带apache，修改网站路径，开启php模块。进入目录1cd /etc/apache2/   备份并编辑httpd.conf12sudo cp httpd.conf httpd.conf.baksudo vim httpd.conf 搜索DocumentRoot，并修改路径为你的网站根目">
+<meta property="og:image" content="https://lijmin.github.io/00_blogImg/img_blog14_01.png">
+<meta property="og:updated_time" content="2022-03-20T04:03:46.876Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="博客园评论（回复、引用）的实现">
-<meta name="twitter:description" content="使用过博客园评论功能的人都知道，点击回复，光标会移到文本框里并在文本框加入@XXX；点击引用，在文本框加入@XXX跟回复的内容。 这里我想实现的就是光标移动并向textarea加入文字 第一步：点击加入文字（假设已得到用户名张三、李四） 先看效果:(点击回复)   //   一楼：张三回复二楼：李四回复">
+<meta name="twitter:title" content="垚淼">
+<meta name="twitter:description" content="主要记录apache、php5.6、mysql5.7、eclipse在mac上的配置。  apache使用系统自带apache，修改网站路径，开启php模块。进入目录1cd /etc/apache2/   备份并编辑httpd.conf12sudo cp httpd.conf httpd.conf.baksudo vim httpd.conf 搜索DocumentRoot，并修改路径为你的网站根目">
+<meta name="twitter:image" content="https://lijmin.github.io/00_blogImg/img_blog14_01.png">
   
     <link rel="alternative" href="/atom.xml" title="垚淼" type="application/atom+xml">
   
@@ -150,81 +151,30 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-1、博客园评论（回复、引用）的实现" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-14、mac搭建php开发环境" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      博客园评论（回复、引用）的实现
-    </h1>
-  
-
-        
-        <a href="/2012/07/25/1、博客园评论（回复、引用）的实现/" class="archive-article-date">
-  	<time datetime="2012-07-24T16:58:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-07-25</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>使用过博客园评论功能的人都知道，点击回复，光标会移到文本框里并在文本框加入@XXX；点击引用，在文本框加入@XXX跟回复的内容。</p>
-<p>这里我想实现的就是光标移动并向textarea加入文字</p>
-<p>第一步：点击加入文字（假设已得到用户名张三、李四）</p>
-<p>先看效果:(点击回复)</p>
-<style><!--
-.pointer {
-        margin-left: 50px;
-        cursor: pointer;    
-        color: #ffa800;
-    }
---></style>
-
-<script type="text/javascript">// <![CDATA[
-function insert(con)
-{var _abc=document.getElementById('reply_text').value;
-_abc=_abc+con;
-document.getElementById('reply_text').value=_abc
-}
-// ]]&gt;</script>
-
-<p>一楼：张三<a class="pointer" onclick="insert('@张三\n')">回复</a><br>二楼：李四<a class="pointer" onclick="insert('@李四\n')">回复</a></p>
-<p><textarea id="reply_text" rows="5"></textarea></p>
-<a id="more"></a>
-<p>代码</p>
-<div class="cnblogs_code"><br><pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">style</span><span style="color: #0000ff;">&gt;</span><span style="background-color: #f5f5f5; color: #800000;"><br>    .pointer </span><span style="background-color: #f5f5f5; color: #000000;">{</span><span style="background-color: #f5f5f5; color: #ff0000;"><br>        margin-left</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 50px</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;"><br>        cursor</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> pointer</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;"><br>        color</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> #ffa800</span><span style="background-color: #f5f5f5; color: #000000;">;</span><br>    <span style="background-color: #f5f5f5; color: #000000;">}</span><br><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">style</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">script </span><span style="color: #ff0000;">type</span><span style="color: #0000ff;">=”text/javascript”</span><span style="color: #0000ff;">&gt;</span><br><span style="background-color: #f5f5f5; color: #0000ff;">function</span><span style="background-color: #f5f5f5; color: #000000;"> insert(con)<br>{</span><span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> _abc</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #000000;">document.getElementById(</span><span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">reply_text</span><span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">).value;<br>_abc</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #000000;">_abc</span><span style="background-color: #f5f5f5; color: #000000;">+</span><span style="background-color: #f5f5f5; color: #000000;">con;<br>document.getElementById(</span><span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">reply_text</span><span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">).value</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #000000;">_abc<br>}<br></span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">script</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;"><br>一楼：张三</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">a </span><span style="color: #ff0000;">class</span><span style="color: #0000ff;">=”pointer”</span><span style="color: #ff0000;"> onclick</span><span style="color: #0000ff;">=”insert(‘@张三\n’)”</span><span style="color: #0000ff;">&gt;</span>回复<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">a</span><span style="color: #0000ff;">/&gt;&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;"><br>二楼：李四</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">a </span><span style="color: #ff0000;">class</span><span style="color: #0000ff;">=”pointer”</span><span style="color: #ff0000;"> onclick</span><span style="color: #0000ff;">=”insert(‘@李四\n’)”</span><span style="color: #0000ff;">&gt;</span>回复<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">a</span><span style="color: #0000ff;">/&gt;&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">textarea </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">=”reply_text”</span><span style="color: #ff0000;"> rows</span><span style="color: #0000ff;">=”5”</span><span style="color: #ff0000;"> cols</span><span style="color: #0000ff;">=”20”</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">textarea</span><span style="color: #0000ff;">&gt;</span></pre><br></div>
-
-<p>&nbsp;</p>
-<p>第二步：点击移动光标</p>
-<p>代码：</p>
-<div class="cnblogs_code"><br><pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">a </span><span style="color: #ff0000;">onclick</span><span style="color: #0000ff;">=”moveEnd(reply_text)”</span><span style="color: #0000ff;">&gt;</span>移动光标<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">a</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">textarea </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">=”reply_text”</span><span style="color: #ff0000;"> rows</span><span style="color: #0000ff;">=”5”</span><span style="color: #ff0000;"> cols</span><span style="color: #0000ff;">=”20”</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">textarea</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">script</span><span style="color: #0000ff;">&gt;</span><br><span style="background-color: #f5f5f5; color: #0000ff;">function</span><span style="background-color: #f5f5f5; color: #000000;"> moveEnd(obj){<br>    obj.focus();<br>    </span><span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> len </span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #000000;"> obj.value.length;<br>    </span><span style="background-color: #f5f5f5; color: #0000ff;">if</span><span style="background-color: #f5f5f5; color: #000000;"> (document.selection) {<br>        </span><span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> sel </span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #000000;"> obj.createTextRange();<br>        sel.moveStart(</span><span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">character</span><span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">,len);<br>        sel.collapse();<br>        sel.select();<br>    } </span><span style="background-color: #f5f5f5; color: #0000ff;">else</span> <span style="background-color: #f5f5f5; color: #0000ff;">if</span><span style="background-color: #f5f5f5; color: #000000;"> (</span><span style="background-color: #f5f5f5; color: #0000ff;">typeof</span><span style="background-color: #f5f5f5; color: #000000;"> obj.selectionStart </span><span style="background-color: #f5f5f5; color: #000000;">==</span> <span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">number</span><span style="background-color: #f5f5f5; color: #000000;">‘</span> <span style="background-color: #f5f5f5; color: #000000;">&amp;&amp;</span> <span style="background-color: #f5f5f5; color: #0000ff;">typeof</span><span style="background-color: #f5f5f5; color: #000000;"> obj.selectionEnd </span><span style="background-color: #f5f5f5; color: #000000;">==</span> <span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">number</span><span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">) {<br>        obj.selectionStart </span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #000000;"> obj.selectionEnd </span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #000000;"> len;<br>    }<br>}<br></span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">script</span><span style="color: #0000ff;">&gt;</span><br> </pre><br></div>
-
-<p>&nbsp;</p>
-<p>加在一起后的效果：（点击回复）</p>
-<script type="text/javascript">// <![CDATA[
-function moveEnd(obj){
-    obj.focus();
-    var len = obj.value.length;
-    if (document.selection) {
-        var sel = obj.createTextRange();
-        sel.moveStart('character',len);
-        sel.collapse();
-        sel.select();
-    } else if (typeof obj.selectionStart == 'number' && typeof obj.selectionEnd == 'number') {
-        obj.selectionStart = obj.selectionEnd = len;
-    }
-}
-// ]]&gt;</script>
-
-<p>一楼：张三<a class="pointer" onclick="insert('@张三\n'),moveEnd(reply_text)">回复</a><br>二楼：李四<a class="pointer" onclick="insert('@李四\n'),moveEnd(reply_text)">回复</a></p>
-<p></p>
-<p>全部代码：</p>
-<div class="cnblogs_code"><br><pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">style</span><span style="color: #0000ff;">&gt;</span><span style="background-color: #f5f5f5; color: #800000;"><br>    .pointer </span><span style="background-color: #f5f5f5; color: #000000;">{</span><span style="background-color: #f5f5f5; color: #ff0000;"><br>        margin-left</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 50px</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;"><br>        cursor</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> pointer</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;"><br>        color</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> #ffa800</span><span style="background-color: #f5f5f5; color: #000000;">;</span><br>    <span style="background-color: #f5f5f5; color: #000000;">}</span><br><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">style</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">script </span><span style="color: #ff0000;">type</span><span style="color: #0000ff;">=”text/javascript”</span><span style="color: #0000ff;">&gt;</span><br><span style="background-color: #f5f5f5; color: #0000ff;">function</span><span style="background-color: #f5f5f5; color: #000000;"> insert(con)<br>{</span><span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> t</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #000000;">document.getElementById(</span><span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">reply_text</span><span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">).value;<br>t</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #000000;">t</span><span style="background-color: #f5f5f5; color: #000000;">+</span><span style="background-color: #f5f5f5; color: #000000;">con;<br>document.getElementById(</span><span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">reply_text</span><span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">).value</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #000000;">t<br>}<br><br></span><span style="background-color: #f5f5f5; color: #0000ff;">function</span><span style="background-color: #f5f5f5; color: #000000;"> moveEnd(obj){<br>    obj.focus();<br>    </span><span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> len </span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #000000;"> obj.value.length;<br>    </span><span style="background-color: #f5f5f5; color: #0000ff;">if</span><span style="background-color: #f5f5f5; color: #000000;"> (document.selection) {<br>        </span><span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> sel </span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #000000;"> obj.createTextRange();<br>        sel.moveStart(</span><span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">character</span><span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">,len);<br>        sel.collapse();<br>        sel.select();<br>    } </span><span style="background-color: #f5f5f5; color: #0000ff;">else</span> <span style="background-color: #f5f5f5; color: #0000ff;">if</span><span style="background-color: #f5f5f5; color: #000000;"> (</span><span style="background-color: #f5f5f5; color: #0000ff;">typeof</span><span style="background-color: #f5f5f5; color: #000000;"> obj.selectionStart </span><span style="background-color: #f5f5f5; color: #000000;">==</span> <span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">number</span><span style="background-color: #f5f5f5; color: #000000;">‘</span> <span style="background-color: #f5f5f5; color: #000000;">&amp;&amp;</span> <span style="background-color: #f5f5f5; color: #0000ff;">typeof</span><span style="background-color: #f5f5f5; color: #000000;"> obj.selectionEnd </span><span style="background-color: #f5f5f5; color: #000000;">==</span> <span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">number</span><span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">) {<br>        obj.selectionStart </span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #000000;"> obj.selectionEnd </span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #000000;"> len;<br>    }<br>}<br></span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">script</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;"><br>一楼：张三</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">a </span><span style="color: #ff0000;">class</span><span style="color: #0000ff;">=”pointer”</span><span style="color: #ff0000;"> onclick</span><span style="color: #0000ff;">=”insert(‘@张三\n’),moveEnd(reply_text)”</span><span style="color: #0000ff;">&gt;</span>回复<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">a</span><span style="color: #0000ff;">/&gt;&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;"><br>二楼：李四</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">a </span><span style="color: #ff0000;">class</span><span style="color: #0000ff;">=”pointer”</span><span style="color: #ff0000;"> onclick</span><span style="color: #0000ff;">=”insert(‘@李四\n’),moveEnd(reply_text)”</span><span style="color: #0000ff;">&gt;</span>回复<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">a</span><span style="color: #0000ff;">/&gt;&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">textarea </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">=”reply_text”</span><span style="color: #ff0000;"> rows</span><span style="color: #0000ff;">=”5”</span><span style="color: #ff0000;"> cols</span><span style="color: #0000ff;">=”20”</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">textarea</span><span style="color: #0000ff;">&gt;</span></pre><br></div>
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+        <p>主要记录apache、php5.6、mysql5.7、eclipse在mac上的配置。</p>
+<ul>
+<li>apache<br>使用系统自带apache，修改网站路径，开启php模块。<br>进入目录<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> <span class="string">/etc/apache2/</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>备份并编辑httpd.conf<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp httpd<span class="selector-class">.conf</span> httpd<span class="selector-class">.conf</span><span class="selector-class">.bak</span></span><br><span class="line">sudo vim httpd.conf</span><br></pre></td></tr></table></figure></p>
+<p>搜索DocumentRoot，并修改路径为你的网站根目录<br><img src="https://lijmin.github.io/00_blogImg/img_blog14_01.png" alt=""><br>搜索php，把php的加载模块打开。</p>
+<p>sudo apachectl stop 停止<br>sudo apachectl start 启动</p>
+<ul>
+<li><p>php<br>通过命令安装</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s <span class="string">http:</span><span class="comment">//php-osx.liip.ch/install.sh | bash -s 5.6</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>mysql<br>mysql启动<br>sudo launchctl unload -w /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist</p>
+</li>
+</ul>
+<p>2020-02-18T06:34:37.036622Z 1 [Note] A temporary password is generated for root@localhost: JeKjyZri8o)?</p>
+<p>If you lose this password, please consult the section How to Reset the Root Password in the MySQL reference manual.</p>
+<p>eclips</p>
+<p>linux<br>修改目录权限<br>sudo chmod -R 777 xxx/</p>
 
       
 
@@ -264,17 +214,6 @@ function moveEnd(obj){
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -325,7 +264,7 @@ function moveEnd(obj){
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2012/07/25/1、博客园评论（回复、引用）的实现/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/03/11/14、mac搭建php开发环境/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -339,15 +278,20 @@ function moveEnd(obj){
   
 <nav id="article-nav">
   
-    <a href="/2012/07/27/2、网页中加入百度地图（带地区搜索）/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/11/02/11、android日历/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          网页中加入百度地图（带地区搜索）
+          android日历
         
       </div>
     </a>
   
+  
+    <a href="/2018/03/11/10、android饼状图/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">android饼状图</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -375,7 +319,7 @@ function moveEnd(obj){
   
 
   
-  <div id="SOHUCS" sid="1、博客园评论（回复、引用）的实现" ></div> 
+  <div id="SOHUCS" sid="14、mac搭建php开发环境" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
