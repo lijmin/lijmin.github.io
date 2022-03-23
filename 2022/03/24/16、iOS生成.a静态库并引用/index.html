@@ -6,17 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2016 | 垚淼</title>
+  <title>iOS生成.a静态库并引用 | 垚淼</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JimmyLee’s blog | java | android">
-<meta property="og:type" content="website">
-<meta property="og:title" content="垚淼">
-<meta property="og:url" content="http://yoursite.com/archives/2016/index.html">
+  <meta name="description" content="iOS生成.a静态库并引用。">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS生成.a静态库并引用">
+<meta property="og:url" content="http://yoursite.com/2022/03/24/16、iOS生成.a静态库并引用/index.html">
 <meta property="og:site_name" content="垚淼">
-<meta property="og:description" content="JimmyLee’s blog | java | android">
+<meta property="og:description" content="iOS生成.a静态库并引用。">
+<meta property="og:image" content="https://lijmin.github.io/00_blogImg/img_blog16_01.png">
+<meta property="og:image" content="https://lijmin.github.io/00_blogImg/img_blog16_02.png">
+<meta property="og:image" content="https://lijmin.github.io/00_blogImg/img_blog16_03.png">
+<meta property="og:image" content="https://lijmin.github.io/00_blogImg/img_blog16_04.png">
+<meta property="og:updated_time" content="2022-03-23T17:13:09.460Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="垚淼">
-<meta name="twitter:description" content="JimmyLee’s blog | java | android">
+<meta name="twitter:title" content="iOS生成.a静态库并引用">
+<meta name="twitter:description" content="iOS生成.a静态库并引用。">
+<meta name="twitter:image" content="https://lijmin.github.io/00_blogImg/img_blog16_01.png">
   
     <link rel="alternative" href="/atom.xml" title="垚淼" type="application/atom+xml">
   
@@ -148,98 +155,192 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-16、iOS生成.a静态库并引用" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/06/11/7、android编程01－编译过程/" class="archive-article-date">
-  	<time datetime="2016-06-11T04:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-11</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/11/7、android编程01－编译过程/">android编译过程</a>
+    <h1 class="article-title" itemprop="name">
+      iOS生成.a静态库并引用
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2022/03/24/16、iOS生成.a静态库并引用/" class="archive-article-date">
+  	<time datetime="2022-03-24T04:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在xcode上面生成iOS静态库.a文件，并引用。</p>
+<h2 id="创建libhello-a"><a href="#创建libhello-a" class="headerlink" title="创建libhello.a"></a>创建libhello.a</h2><p>打开xcode，依次点击File-&gt;New-&gt;Project-&gt;Static Library创建项目<br><img src="https://lijmin.github.io/00_blogImg/img_blog16_01.png" alt=""><br><a id="more"></a><br>创建简单的c文件，添加add方法<br>hello.h<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> hello_h</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> hello_h</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure></p>
+<p>hello.c<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"hello.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>点击command+b编译，编译成功即可在Products目录下生成libhello.a。<br>右键libhello.a-&gt;Show in Filder，把libhello.a拷贝出来备用。</p>
+<p>如果没有Products目录<br>到项目的目录下找hello.xcodeproj文件，右键显示包内容<br>然后打开project.pbxproj文件<br>搜索mainGroup，把mainGroup后面的内容复制到productRefGroup<br>回到xcode即可看到Products</p>
+<h2 id="引用hello-a"><a href="#引用hello-a" class="headerlink" title="引用hello.a"></a>引用hello.a</h2><p>打开xcode，依次点击File-&gt;New-&gt;Project-&gt;app创建项目<br><img src="https://lijmin.github.io/00_blogImg/img_blog16_02.png" alt=""><br>创建hello文件夹，将hello.h、libhello.a拖入到文件夹下面<br><img src="https://lijmin.github.io/00_blogImg/img_blog16_03.png" alt=""><br>在ViewController.m里面调用hello.c的add方法<br><img src="https://lijmin.github.io/00_blogImg/img_blog16_04.png" alt=""></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://lijmin.github.io/00_blogImg/img_pay_ali.jpeg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://lijmin.github.io/00_blogImg/img_pay_wechat.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2022/03/24/16、iOS生成.a静态库并引用/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/06/04/6、Mac配置android adb环境变量/" class="archive-article-date">
-  	<time datetime="2016-06-04T14:43:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-04</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2022/03/20/15、android NDK引入第三方so库及头文件/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">android NDK引入第三方so库及头文件</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/04/6、Mac配置android adb环境变量/">Mac配置android adb环境变量</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mac</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
+  <div id="SOHUCS" sid="16、iOS生成.a静态库并引用" ></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "cytzlMPRa",
+        conf: "prod_0de8174a90fcc3d9007438fcef246e35"
+    });
+</script>
+</script>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -262,8 +363,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

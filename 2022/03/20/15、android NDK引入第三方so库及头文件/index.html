@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://lijmin.github.io/00_blogImg/img_blog15_06.png">
 <meta property="og:image" content="https://lijmin.github.io/00_blogImg/img_blog15_07.png">
 <meta property="og:image" content="https://lijmin.github.io/00_blogImg/img_blog15_08.png">
-<meta property="og:updated_time" content="2022-03-20T15:33:04.391Z">
+<meta property="og:updated_time" content="2022-03-23T16:07:10.304Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android NDK引入第三方so库及头文件">
 <meta name="twitter:description" content="在android中调用一个没有jni接口的so动态库。">
@@ -187,7 +187,8 @@
 </ol>
 <a id="more"></a>
 <h3 id="创建other-so"><a href="#创建other-so" class="headerlink" title="创建other.so"></a>创建other.so</h3><p>在android studio中创建native c++项目<br>File-&gt;New-&gt;New Project-&gt;Native C++<br><img src="https://lijmin.github.io/00_blogImg/img_blog15_01.png" alt=""><br>在cpp目录下创建other的C++类，并添加一个add方法<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"other.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> other::add(<span class="keyword">int</span> a, <span class="keyword">int</span> b) &#123;</span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在CMakeLists.txt里面加入other.cpp<br><img src="https://lijmin.github.io/00_blogImg/img_blog15_02.png" alt=""><br>点击运行,在app-&gt;build-&gt;intermediates-&gt;cmake-&gt;debug-&gt;obj-&gt;x86目录下可看到生成到libother.so<br>将libother.so、other.h文件拷贝出来备用。</p>
+<p>在CMakeLists.txt里面加入other.cpp<br><img src="https://lijmin.github.io/00_blogImg/img_blog15_02.png" alt=""><br>点击运行,在app-&gt;build-&gt;intermediates-&gt;cmake-&gt;debug-&gt;obj-&gt;x86目录下可看到生成到libother.so<br>配置多架构,在app的build.gradle配置abiFilters，然后点击构建。<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">android&#123;</span><br><span class="line">   ...</span><br><span class="line">   defaultConfig &#123;</span><br><span class="line">      ...</span><br><span class="line">      ndk&#123;  </span><br><span class="line">         moduleName <span class="string">"JniTest"</span>  </span><br><span class="line">         abiFilters <span class="string">"armeabi"</span>, <span class="string">"armeabi-v7a"</span>, <span class="string">"x86"</span>  </span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>将libother.so、other.h文件拷贝出来备用。</p>
 <h3 id="创建link-other-so"><a href="#创建link-other-so" class="headerlink" title="创建link_other.so"></a>创建link_other.so</h3><p>直接在第一个项目上面改<br>把libother.so加入到libs目录<br>创建include目录并把other.h的头文件放到里面<br><img src="https://lijmin.github.io/00_blogImg/img_blog15_03.png" alt=""><br>修改CMakeList.txt，加入other.so<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置so库路径</span></span><br><span class="line">set(my_lib_path $&#123;CMAKE_SOURCE_DIR&#125;/../../../libs)</span><br><span class="line">add_library(other SHARED IMPORTED)</span><br><span class="line">set_target_properties(other PROPERTIES IMPORTED_LOCATION $&#123;my_lib_path&#125;/$&#123;ANDROID_ABI&#125;/libother.so)</span><br><span class="line">include_directories($&#123;CMAKE_SOURCE_DIR&#125;/<span class="keyword">include</span>/)</span><br><span class="line"></span><br><span class="line">add_library(link-other SHARED native-<span class="class"><span class="keyword">lib</span>.<span class="title">cpp</span>)</span></span><br><span class="line">find_library(log-<span class="class"><span class="keyword">lib</span> <span class="title">log</span>)</span></span><br><span class="line">target_link_libraries(link-other other $&#123;log-<span class="class"><span class="keyword">lib</span>&#125;)</span></span><br></pre></td></tr></table></figure></p>
 <p>创建NDK方法，来调用other.so里面到add方法。<br><img src="https://lijmin.github.io/00_blogImg/img_blog15_04.png" alt=""><br><img src="https://lijmin.github.io/00_blogImg/img_blog15_05.png" alt=""><br>同样点击运行,在app-&gt;build-&gt;intermediates-&gt;cmake-&gt;debug-&gt;obj-&gt;x86目录下可看到生成了两个so文件。<br>这个时候在当前项目内是无法运行的，需要把两个so拿到测试项目运行。</p>
 <h2 id="测试link-other-so"><a href="#测试link-other-so" class="headerlink" title="测试link-other.so"></a>测试link-other.so</h2><p>同样将两个so加入到新项目的libs<br>在app的build.gradle加入编译路径<br><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">android&#123;</span><br><span class="line">    ...</span><br><span class="line">    sourceSets &#123;</span><br><span class="line">        main &#123;</span><br><span class="line">            jniLibs.srcDirs = [<span class="string">'libs'</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -313,6 +314,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2022/03/24/16、iOS生成.a静态库并引用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          iOS生成.a静态库并引用
+        
+      </div>
+    </a>
   
   
     <a href="/2020/02/20/14、mac搭建php开发环境/" id="article-nav-older" class="article-nav-link-wrap">
@@ -444,19 +454,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ionic4</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NDK</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">so</a>
+                <a href="javascript:void(0)" class="js-tag color2">ionic4</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -472,15 +474,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NDK</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">so</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
+                <a href="javascript:void(0)" class="js-tag color3">windows</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">windows</a>
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
