@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2022-03-23T17:26:49.399Z</updated>
+  <updated>2022-03-27T13:59:28.702Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CMake编译iOS静态库.a</title>
+    <link href="http://yoursite.com/2027/03/27/17%E3%80%81CMAKE%E7%BC%96%E8%AF%91iOS/"/>
+    <id>http://yoursite.com/2027/03/27/17、CMAKE编译iOS/</id>
+    <published>2027-03-27T13:20:00.000Z</published>
+    <updated>2022-03-27T13:59:28.702Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>mac操作系统使用CMake构建xcode项目，并编译iOS静态库。<br>CMake官网：<a href="https://cmake.org" target="_blank" rel="noopener">https://cmake.org</a><br>CMake文档：<a href="https://cmake.org/cmake/help/v3.23/manual/cmake-toolchains.7.html" target="_blank" rel="noopener">https://cmake.org/cmake/help/v3.23/manual/cmake-toolchains.7.html</a></p><h2 id="安装CMake"><a href="#安装CMake" class="headerlink" title="安装CMake"></a>安装CMake</h2><p>从官网下载最新版本的CMake并安装。<br>从指引安装命令行工具<br><a id="more"></a><br><img src="https://lijmin.github.io/00_blogImg/img_blog17_01.png" alt=""><br><img src="https://lijmin.github.io/00_blogImg/img_blog17_02.png" alt=""><br>一般安装第二条就可以使用了。<br>查看CMake版本号<code>cmake --version</code><br><img src="https://lijmin.github.io/00_blogImg/img_blog17_03.png" alt=""></p><h2 id="准备编译"><a href="#准备编译" class="headerlink" title="准备编译"></a>准备编译</h2><p>创建hello目录，作为源码目录。<br>创建hello.c放入目录。<br>在目录下创建CMakeLists.txt，内容如下：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CMAKE_MINIMUM_REQUIRED</span>(VERSION <span class="number">3.23</span>) <span class="comment"># CMake版本</span></span><br><span class="line"><span class="keyword">PROJECT</span>(hello)</span><br><span class="line"><span class="keyword">ADD_LIBRARY</span>(hello STATIC hello.c) <span class="comment"># 源码，多个可用空格</span></span><br><span class="line"><span class="keyword">INSTALL</span>(TARGETS hello DESTINATION lib)</span><br></pre></td></tr></table></figure></p><h2 id="开始编译"><a href="#开始编译" class="headerlink" title="开始编译"></a>开始编译</h2><p>创建build目录，作为编译目录。<br>进入build目录开始构建项目<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cmake .. -G Xcode -T buildsystem=<span class="number">1</span> -DCMAKE_SYSTEM_NAME=iOS \</span><br><span class="line"><span class="string">"-DCMAKE_OSX_ARCHITECTURES=armv7;armv7s;arm64;x86_64"</span> \</span><br><span class="line">-DCMAKE_OSX_DEPLOYMENT_TARGET=<span class="number">9.3</span> \</span><br><span class="line">-DCMAKE_INSTALL_PREFIX=`pwd`/_install \</span><br><span class="line">-DCMAKE_XCODE_ATTRIBUTE_ONLY_ACTIVE_ARCH=NO \</span><br><span class="line">-DCMAKE_IOS_INSTALL_COMBINED=YES</span><br></pre></td></tr></table></figure></p><p>等待执行完成，可看到generation done.<br><img src="https://lijmin.github.io/00_blogImg/img_blog17_04.png" alt=""><br>执行编译命令<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake --build . --config Release --target <span class="keyword">install</span></span><br></pre></td></tr></table></figure></p><p>看到BUILD SUCCEEDED编译成功。<br><img src="https://lijmin.github.io/00_blogImg/img_blog17_05.png" alt=""><br>查看编译库信息：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Lipo -info _install/lib/libhello.a</span><br></pre></td></tr></table></figure></p><p><img src="https://lijmin.github.io/00_blogImg/img_blog17_06.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      使用CMake构建xcode项目，编译iOS静态库
+    
+    </summary>
+    
+    
+      <category term="CMake" scheme="http://yoursite.com/tags/CMake/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS生成.a静态库并引用</title>
