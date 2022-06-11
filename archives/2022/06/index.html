@@ -6,21 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>mac搭建php开发环境 | 垚淼</title>
+  <title>Archives: 2022/6 | 垚淼</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ionic4+angular7+cordova上传图片">
-<meta name="keywords" content="php,mysql,apache">
-<meta property="og:type" content="article">
-<meta property="og:title" content="mac搭建php开发环境">
-<meta property="og:url" content="http://yoursite.com/2020/02/20/14、mac搭建php开发环境/index.html">
+  <meta name="description" content="JimmyLee’s blog | java | android">
+<meta property="og:type" content="website">
+<meta property="og:title" content="垚淼">
+<meta property="og:url" content="http://yoursite.com/archives/2022/06/index.html">
 <meta property="og:site_name" content="垚淼">
-<meta property="og:description" content="ionic4+angular7+cordova上传图片">
-<meta property="og:image" content="https://lijmin.github.io/00_blogImg/img_blog14_01.png">
-<meta property="og:updated_time" content="2022-03-20T15:19:52.750Z">
+<meta property="og:description" content="JimmyLee’s blog | java | android">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mac搭建php开发环境">
-<meta name="twitter:description" content="ionic4+angular7+cordova上传图片">
-<meta name="twitter:image" content="https://lijmin.github.io/00_blogImg/img_blog14_01.png">
+<meta name="twitter:title" content="垚淼">
+<meta name="twitter:description" content="JimmyLee’s blog | java | android">
   
     <link rel="alternative" href="/atom.xml" title="垚淼" type="application/atom+xml">
   
@@ -152,215 +148,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-14、mac搭建php开发环境" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      mac搭建php开发环境
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2022" class="archive-year">2022</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2022/06/11/19、Flutter调用android原生代码（插件开发）/" class="archive-article-date">
+  	<time datetime="2022-06-11T02:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-11</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2022/06/11/19、Flutter调用android原生代码（插件开发）/">Flutter调用android原生代码（插件开发）</a>
     </h1>
   
 
-        
-        <a href="/2020/02/20/14、mac搭建php开发环境/" class="archive-article-date">
-  	<time datetime="2020-02-20T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>主要记录apache、php5.6、mysql5.7、eclipse在mac上的配置。</p>
-<h3 id="apache"><a href="#apache" class="headerlink" title="apache"></a>apache</h3><p>  使用系统自带apache，修改网站路径，开启php模块。<br>  进入目录<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> <span class="string">/etc/apache2/</span></span><br></pre></td></tr></table></figure></p>
-<p>备份并编辑httpd.conf<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp httpd<span class="selector-class">.conf</span> httpd<span class="selector-class">.conf</span><span class="selector-class">.bak</span></span><br><span class="line">sudo vim httpd.conf</span><br></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>搜索DocumentRoot，并修改路径为你的网站根目录<br><img src="https://lijmin.github.io/00_blogImg/img_blog14_01.png" alt=""><br>搜索php，把php的加载模块打开。</p>
-<p>sudo apachectl stop 停止<br>sudo apachectl start 启动</p>
-<h3 id="php"><a href="#php" class="headerlink" title="php"></a>php</h3><p>  通过命令安装<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s <span class="string">http:</span><span class="comment">//php-osx.liip.ch/install.sh | bash -s 5.6</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><p>  mysql启动<br>  sudo launchctl unload -w /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist</p>
-<p>2020-02-18T06:34:37.036622Z 1 [Note] A temporary password is generated for root@localhost: JeKjyZri8o)?</p>
-<p>If you lose this password, please consult the section How to Reset the Root Password in the MySQL reference manual.</p>
-<p>eclips</p>
-<p>linux<br>修改目录权限<br>sudo chmod -R 777 xxx/</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://lijmin.github.io/00_blogImg/img_pay_ali.jpeg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://lijmin.github.io/00_blogImg/img_pay_wechat.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">apache</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">flutter</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/20/14、mac搭建php开发环境/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2022/03/20/15、android NDK引入第三方so库及头文件/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          android NDK引入第三方so库及头文件
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/06/18/13、ionic4+angular7+cordova上传图片/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">ionic4+angular7+cordova上传图片</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-  <div id="SOHUCS" sid="14、mac搭建php开发环境" ></div> 
-<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
-<script type="text/javascript">
-    window.changyan.api.config({
-        appid: "cyvYlFvBj",
-        conf: "5ab87ae23059fc1f4bd8d71762db7dcd"
-    });
-</script>
-</script>
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -383,8 +224,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -6,21 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>mac搭建php开发环境 | 垚淼</title>
+  <title>Flutter调用android原生代码（插件开发） | 垚淼</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ionic4+angular7+cordova上传图片">
-<meta name="keywords" content="php,mysql,apache">
+  <meta name="description" content="使用flutter调用android原生代码，实现安装apk功能">
+<meta name="keywords" content="flutter">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mac搭建php开发环境">
-<meta property="og:url" content="http://yoursite.com/2020/02/20/14、mac搭建php开发环境/index.html">
+<meta property="og:title" content="Flutter调用android原生代码（插件开发）">
+<meta property="og:url" content="http://yoursite.com/2022/06/11/19、Flutter调用android原生代码（插件开发）/index.html">
 <meta property="og:site_name" content="垚淼">
-<meta property="og:description" content="ionic4+angular7+cordova上传图片">
-<meta property="og:image" content="https://lijmin.github.io/00_blogImg/img_blog14_01.png">
-<meta property="og:updated_time" content="2022-03-20T15:19:52.750Z">
+<meta property="og:description" content="使用flutter调用android原生代码，实现安装apk功能">
+<meta property="og:updated_time" content="2022-06-11T11:59:04.932Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mac搭建php开发环境">
-<meta name="twitter:description" content="ionic4+angular7+cordova上传图片">
-<meta name="twitter:image" content="https://lijmin.github.io/00_blogImg/img_blog14_01.png">
+<meta name="twitter:title" content="Flutter调用android原生代码（插件开发）">
+<meta name="twitter:description" content="使用flutter调用android原生代码，实现安装apk功能">
   
     <link rel="alternative" href="/atom.xml" title="垚淼" type="application/atom+xml">
   
@@ -152,38 +150,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-14、mac搭建php开发环境" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-19、Flutter调用android原生代码（插件开发）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      mac搭建php开发环境
+      Flutter调用android原生代码（插件开发）
     </h1>
   
 
         
-        <a href="/2020/02/20/14、mac搭建php开发环境/" class="archive-article-date">
-  	<time datetime="2020-02-20T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-20</time>
+        <a href="/2022/06/11/19、Flutter调用android原生代码（插件开发）/" class="archive-article-date">
+  	<time datetime="2022-06-11T02:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>主要记录apache、php5.6、mysql5.7、eclipse在mac上的配置。</p>
-<h3 id="apache"><a href="#apache" class="headerlink" title="apache"></a>apache</h3><p>  使用系统自带apache，修改网站路径，开启php模块。<br>  进入目录<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> <span class="string">/etc/apache2/</span></span><br></pre></td></tr></table></figure></p>
-<p>备份并编辑httpd.conf<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp httpd<span class="selector-class">.conf</span> httpd<span class="selector-class">.conf</span><span class="selector-class">.bak</span></span><br><span class="line">sudo vim httpd.conf</span><br></pre></td></tr></table></figure></p>
+        <p>本文主要记录flutter插件开发，使用flutter调用android原生代码，android插件使用java语言，实现一个安装apk功能。<br><a href="https://github.com/lijmin/flutter_plugin_install_apk" target="_blank" rel="noopener">插件地址:https://github.com/lijmin/flutter_plugin_install_apk</a></p>
+<h2 id="创建flutter插件"><a href="#创建flutter插件" class="headerlink" title="创建flutter插件"></a>创建flutter插件</h2><p><code>flutter create --platforms=android -a java --template=plugin install_apk</code><br>只需要android平台，使用语言是java</p>
+<h2 id="添加dart接口"><a href="#添加dart接口" class="headerlink" title="添加dart接口"></a>添加dart接口</h2><p>lib目录下</p>
+<ul>
+<li><p>install_apk_platform_interface.dart 添加接口</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Future&lt;<span class="built_in">Map</span>&gt; installApk(<span class="built_in">String</span> filePath) &#123;</span><br><span class="line">  <span class="keyword">throw</span> UnimplementedError(<span class="string">'installApk() has not been implemented.'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>install_apk_method_channel.dart 添加接口实现，调用android的installApk方法</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@override</span></span><br><span class="line">Future&lt;<span class="built_in">Map</span>&gt; installApk(<span class="built_in">String</span> filePath) <span class="keyword">async</span> &#123;</span><br><span class="line">  <span class="built_in">Map</span>&lt;<span class="keyword">dynamic</span>, <span class="keyword">dynamic</span>&gt; map = &#123;<span class="string">"filePath"</span>:filePath&#125;;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">await</span> methodChannel.invokeMethod(<span class="string">'installApk'</span>, map);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <a id="more"></a>
-<p>搜索DocumentRoot，并修改路径为你的网站根目录<br><img src="https://lijmin.github.io/00_blogImg/img_blog14_01.png" alt=""><br>搜索php，把php的加载模块打开。</p>
-<p>sudo apachectl stop 停止<br>sudo apachectl start 启动</p>
-<h3 id="php"><a href="#php" class="headerlink" title="php"></a>php</h3><p>  通过命令安装<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s <span class="string">http:</span><span class="comment">//php-osx.liip.ch/install.sh | bash -s 5.6</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><p>  mysql启动<br>  sudo launchctl unload -w /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist</p>
-<p>2020-02-18T06:34:37.036622Z 1 [Note] A temporary password is generated for root@localhost: JeKjyZri8o)?</p>
-<p>If you lose this password, please consult the section How to Reset the Root Password in the MySQL reference manual.</p>
-<p>eclips</p>
-<p>linux<br>修改目录权限<br>sudo chmod -R 777 xxx/</p>
+<h2 id="android-installApk方法实现"><a href="#android-installApk方法实现" class="headerlink" title="android installApk方法实现"></a>android installApk方法实现</h2><ul>
+<li><p>从onAttachedToEngine方法获取context</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAttachedToEngine</span><span class="params">(@NonNull FlutterPluginBinding flutterPluginBinding)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    context = flutterPluginBinding.getApplicationContext();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>onMethodCall是方法入口，根据方法名称分发，并获取参数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMethodCall</span><span class="params">(@NonNull MethodCall call, @NonNull Result result)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (call.method.equals(<span class="string">"installApk"</span>)) &#123;</span><br><span class="line">        Map&lt;String, Object&gt; map = (Map&lt;String, Object&gt;) call.arguments;</span><br><span class="line">        String filePath = map.get(<span class="string">"filePath"</span>).toString();</span><br><span class="line">        Log.e(<span class="string">"TAG"</span>, filePath);</span><br><span class="line">        installAPK(filePath);</span><br><span class="line">        Map&lt;String, Object&gt; resp = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        resp.put(<span class="string">"code"</span>, <span class="number">1</span>);</span><br><span class="line">        resp.put(<span class="string">"msg"</span>, <span class="string">"install success"</span>);</span><br><span class="line">        result.success(resp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实现安装方法installAPK</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">installAPK</span><span class="params">(String filePath)</span> </span>&#123;</span><br><span class="line">  Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW);</span><br><span class="line">  Uri uri;</span><br><span class="line">  <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) &#123;</span><br><span class="line">    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK );</span><br><span class="line">    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);</span><br><span class="line">    uri = FileProvider.getUriForFile(context, <span class="string">"com.lijmin.installer.provider"</span>, <span class="keyword">new</span> File(filePath));</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    uri = Uri.fromFile(<span class="keyword">new</span> File(filePath));</span><br><span class="line">  &#125;</span><br><span class="line">  intent.setDataAndType(uri,<span class="string">"application/vnd.android.package-archive"</span>);</span><br><span class="line">  context.startActivity(intent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>AndroidManifest.xml添加provider</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">manifest</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">application</span>&gt;</span></span><br><span class="line">        ...</span><br><span class="line">        <span class="tag">&lt;<span class="name">provider</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:name</span>=<span class="string">"androidx.core.content.FileProvider"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:authorities</span>=<span class="string">"com.lijmin.installer.provider"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:exported</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:grantUriPermissions</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">meta-data</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:name</span>=<span class="string">"android.support.FILE_PROVIDER_PATHS"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:resource</span>=<span class="string">"@xml/file_paths"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">provider</span>&gt;</span></span><br><span class="line">        ...</span><br><span class="line">    <span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加file_paths资源文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">files-path</span> <span class="attr">path</span>=<span class="string">""</span> <span class="attr">name</span>=<span class="string">"name"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>内部的element可以是files-path，cache-path，external-path，external-files-path，external-cache-path，<br>分别对应Context.getFilesDir()，Context.getCacheDir()，Environment.getExternalStorageDirectory()，Context.getExternalFilesDir()，Context.getExternalCacheDir()等几个方法。</p>
+<ul>
+<li>添加安装apk权限<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.REQUEST_INSTALL_PACKAGES"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
       
 
@@ -228,15 +248,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">apache</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">flutter</a>
         		</li>
       		
 		</ul>
@@ -292,7 +304,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/20/14、mac搭建php开发环境/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2022/06/11/19、Flutter调用android原生代码（插件开发）/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -306,18 +318,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/03/20/15、android NDK引入第三方so库及头文件/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          android NDK引入第三方so库及头文件
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/06/18/13、ionic4+angular7+cordova上传图片/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">ionic4+angular7+cordova上传图片</div>
+    <a href="/2022/04/13/18、Flutter中创建插件调用第三方的c库/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Flutter中创建插件调用第三方的c库</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -347,7 +350,7 @@
   
 
   
-  <div id="SOHUCS" sid="14、mac搭建php开发环境" ></div> 
+  <div id="SOHUCS" sid="19、Flutter调用android原生代码（插件开发）" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({

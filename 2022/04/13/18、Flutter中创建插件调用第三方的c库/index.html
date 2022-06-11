@@ -6,21 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>mac搭建php开发环境 | 垚淼</title>
+  <title>Flutter中创建插件调用第三方的c库 | 垚淼</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ionic4+angular7+cordova上传图片">
-<meta name="keywords" content="php,mysql,apache">
+  <meta name="description" content="通过dart:ffi来实现，在Flutter中创建插件调用第三方的c库">
+<meta name="keywords" content="flutter">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mac搭建php开发环境">
-<meta property="og:url" content="http://yoursite.com/2020/02/20/14、mac搭建php开发环境/index.html">
+<meta property="og:title" content="Flutter中创建插件调用第三方的c库">
+<meta property="og:url" content="http://yoursite.com/2022/04/13/18、Flutter中创建插件调用第三方的c库/index.html">
 <meta property="og:site_name" content="垚淼">
-<meta property="og:description" content="ionic4+angular7+cordova上传图片">
-<meta property="og:image" content="https://lijmin.github.io/00_blogImg/img_blog14_01.png">
-<meta property="og:updated_time" content="2022-03-20T15:19:52.750Z">
+<meta property="og:description" content="通过dart:ffi来实现，在Flutter中创建插件调用第三方的c库">
+<meta property="og:image" content="https://lijmin.github.io/00_blogImg/img_blog18_01.jpeg">
+<meta property="og:image" content="https://lijmin.github.io/00_blogImg/img_blog18_02.jpeg">
+<meta property="og:image" content="https://lijmin.github.io/00_blogImg/img_blog18_03.png">
+<meta property="og:image" content="https://lijmin.github.io/00_blogImg/img_blog18_04.jpeg">
+<meta property="og:updated_time" content="2022-04-13T16:11:38.978Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mac搭建php开发环境">
-<meta name="twitter:description" content="ionic4+angular7+cordova上传图片">
-<meta name="twitter:image" content="https://lijmin.github.io/00_blogImg/img_blog14_01.png">
+<meta name="twitter:title" content="Flutter中创建插件调用第三方的c库">
+<meta name="twitter:description" content="通过dart:ffi来实现，在Flutter中创建插件调用第三方的c库">
+<meta name="twitter:image" content="https://lijmin.github.io/00_blogImg/img_blog18_01.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="垚淼" type="application/atom+xml">
   
@@ -152,38 +155,82 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-14、mac搭建php开发环境" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-18、Flutter中创建插件调用第三方的c库" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      mac搭建php开发环境
+      Flutter中创建插件调用第三方的c库
     </h1>
   
 
         
-        <a href="/2020/02/20/14、mac搭建php开发环境/" class="archive-article-date">
-  	<time datetime="2020-02-20T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-20</time>
+        <a href="/2022/04/13/18、Flutter中创建插件调用第三方的c库/" class="archive-article-date">
+  	<time datetime="2022-04-13T13:14:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>主要记录apache、php5.6、mysql5.7、eclipse在mac上的配置。</p>
-<h3 id="apache"><a href="#apache" class="headerlink" title="apache"></a>apache</h3><p>  使用系统自带apache，修改网站路径，开启php模块。<br>  进入目录<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> <span class="string">/etc/apache2/</span></span><br></pre></td></tr></table></figure></p>
-<p>备份并编辑httpd.conf<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp httpd<span class="selector-class">.conf</span> httpd<span class="selector-class">.conf</span><span class="selector-class">.bak</span></span><br><span class="line">sudo vim httpd.conf</span><br></pre></td></tr></table></figure></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Flutter可直接调用android .so，ios .a库，有时候这个库需要通过c代码封装再提供给dart调用。<br>我们可通过dart:ffi来实现，在Flutter中创建插件调用第三方的c库。<br>github：<a href="https://github.com/lijmin/flutter_native_hello" target="_blank" rel="noopener">https://github.com/lijmin/flutter_native_hello</a></p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ol>
+<li>创建android libhello.so库， 参考：<a href="https://lijmin.github.io/2022/03/20/15、android%20NDK引入第三方so库及头文件/" target="_blank" rel="noopener">https://lijmin.github.io/2022/03/20/15、android%20NDK引入第三方so库及头文件/</a></li>
+<li>创建ios libhello.a库，参考：<a href="https://lijmin.github.io/2022/03/24/16、iOS生成.a静态库并引用/" target="_blank" rel="noopener">https://lijmin.github.io/2022/03/24/16、iOS生成.a静态库并引用/</a></li>
+<li>分别添加getHelloWorld函数<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">getHelloWorld</span><span class="params">(<span class="keyword">char</span> *name)</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> *hello = <span class="string">"Hello Android"</span>; <span class="comment">//iOS </span></span><br><span class="line">    <span class="keyword">char</span> *helloName = (<span class="keyword">char</span> *) <span class="built_in">malloc</span>(<span class="built_in">strlen</span>(hello) + <span class="built_in">strlen</span>(name));</span><br><span class="line">    <span class="built_in">strcpy</span>(helloName, hello);</span><br><span class="line">    <span class="built_in">strcat</span>(helloName, name);</span><br><span class="line">    <span class="keyword">return</span> helloName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <a id="more"></a>
-<p>搜索DocumentRoot，并修改路径为你的网站根目录<br><img src="https://lijmin.github.io/00_blogImg/img_blog14_01.png" alt=""><br>搜索php，把php的加载模块打开。</p>
-<p>sudo apachectl stop 停止<br>sudo apachectl start 启动</p>
-<h3 id="php"><a href="#php" class="headerlink" title="php"></a>php</h3><p>  通过命令安装<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s <span class="string">http:</span><span class="comment">//php-osx.liip.ch/install.sh | bash -s 5.6</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><p>  mysql启动<br>  sudo launchctl unload -w /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist</p>
-<p>2020-02-18T06:34:37.036622Z 1 [Note] A temporary password is generated for root@localhost: JeKjyZri8o)?</p>
-<p>If you lose this password, please consult the section How to Reset the Root Password in the MySQL reference manual.</p>
-<p>eclips</p>
-<p>linux<br>修改目录权限<br>sudo chmod -R 777 xxx/</p>
+<h2 id="创建Flutter插件"><a href="#创建Flutter插件" class="headerlink" title="创建Flutter插件"></a>创建Flutter插件</h2><p><code>flutter create --platforms=android,ios -a java -i swift --template=plugin native_hello</code><br>-a java 对应android开发语言，-i swift对应ios开发语言，尽量与项目保持一致，可减少项目配置。</p>
+<h2 id="添加c代码"><a href="#添加c代码" class="headerlink" title="添加c代码"></a>添加c代码</h2><p>由于iOS不能把文件路径放于podspec之上，而android CMakeLists.txt 可以指定到ios目录，所以我们把c代码放在<code>ios/Classes/</code>目录下<br>创建native_hello.c，将hello.h文件放在同级目录，调用getHelloWorld方法。<br>native_hello.c<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"hello.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">getNativeTxt</span><span class="params">(<span class="keyword">char</span> *name)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> getHelloWorld(name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="android-加入libhello-so"><a href="#android-加入libhello-so" class="headerlink" title="android 加入libhello.so"></a>android 加入libhello.so</h3><ul>
+<li>在android目录下创建libs文件夹，加入so库。</li>
+<li>创建CMakeLists.txt</li>
+</ul>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.4</span>.<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">include_directories</span>(../ios/Classes/hello.h) <span class="comment">#包含头文件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">add_library</span>(hello SHARED IMPORTED)</span><br><span class="line"><span class="keyword">set_target_properties</span>(hello PROPERTIES IMPORTED_LOCATION <span class="variable">$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;</span>/libs/<span class="variable">$&#123;ANDROID_ABI&#125;</span>/libhello.so)</span><br><span class="line"></span><br><span class="line"><span class="keyword">add_library</span>( native_hello</span><br><span class="line">             SHARED</span><br><span class="line">             ../ios/Classes/native_hello.c )</span><br><span class="line"><span class="keyword">target_link_libraries</span>(native_hello hello)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>build.gradle添加<code>externalNativeBuild</code></li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  externalNativeBuild &#123;</span><br><span class="line">    cmake &#123;</span><br><span class="line">      path <span class="string">"CMakeLists.txt"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>目录结构如下：</li>
+</ul>
+<p><img src="https://lijmin.github.io/00_blogImg/img_blog18_01.jpeg" alt=""></p>
+<h3 id="iOS加入libhello-a"><a href="#iOS加入libhello-a" class="headerlink" title="iOS加入libhello.a"></a>iOS加入libhello.a</h3><ul>
+<li>将libhello.a文件加入ios根目录</li>
+<li>在根目录下的 .podspec配置 <code>s.vendored_libraries = &#39;libhello.a&#39;</code></li>
+</ul>
+<h2 id="dart调用native-hello-c"><a href="#dart调用native-hello-c" class="headerlink" title="dart调用native_hello.c"></a>dart调用native_hello.c</h2><ul>
+<li>根据平台动态加载本地代码</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'dart:ffi'</span>; <span class="comment">// For FFI</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'dart:io'</span>; <span class="comment">// For Platform.isX</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> DynamicLibrary nativeLib = Platform.isAndroid</span><br><span class="line">    ? DynamicLibrary.open(<span class="string">'libnative_hello.so'</span>)</span><br><span class="line">    : DynamicLibrary.process();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>映射函数</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> Pointer&lt;Int8&gt; <span class="built_in">Function</span>(Pointer&lt;Int8&gt;) getNativeTxt = nativeLib</span><br><span class="line">    .lookup&lt;NativeFunction&lt;Pointer&lt;Int8&gt; <span class="built_in">Function</span>(Pointer&lt;Int8&gt;)&gt;&gt;(<span class="string">'getNativeTxt'</span>)</span><br><span class="line">    .asFunction();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>类型映射表</li>
+</ul>
+<p><img src="https://lijmin.github.io/00_blogImg/img_blog18_02.jpeg" alt=""></p>
+<ul>
+<li><p>在main.dart中调用函数getNativeTxt </p>
+</li>
+<li><p>引入ffi插件，在pubspec.yaml中加入<code>ffi: ^1.1.2</code>，用于c字符串与dart字符串的映射</p>
+</li>
+<li><p>引入<code>package:ffi/ffi.dart</code></p>
+</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'package:ffi/ffi.dart'</span>;</span><br><span class="line"></span><br><span class="line">Pointer&lt;Int8&gt; dartString = <span class="string">" dart"</span>.toNativeUtf8().cast&lt;Int8&gt;();</span><br><span class="line">Pointer&lt;Int8&gt; res = getNativeTxt(dartString);</span><br><span class="line"><span class="built_in">String</span> nativeTxt = res.cast&lt;Utf8&gt;().toDartString();</span><br><span class="line"><span class="built_in">print</span>(nativeTxt);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>最后记得内存释放</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">malloc.free(dartString);</span><br><span class="line">malloc.free(res);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>分别在ios、android上运行</li>
+</ul>
+<p><img src="https://lijmin.github.io/00_blogImg/img_blog18_03.png" alt=""><br><img src="https://lijmin.github.io/00_blogImg/img_blog18_04.jpeg" alt=""></p>
 
       
 
@@ -228,15 +275,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">apache</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">flutter</a>
         		</li>
       		
 		</ul>
@@ -292,7 +331,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/20/14、mac搭建php开发环境/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2022/04/13/18、Flutter中创建插件调用第三方的c库/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -306,18 +345,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/03/20/15、android NDK引入第三方so库及头文件/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/06/11/19、Flutter调用android原生代码（插件开发）/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          android NDK引入第三方so库及头文件
+          Flutter调用android原生代码（插件开发）
         
       </div>
     </a>
   
   
-    <a href="/2019/06/18/13、ionic4+angular7+cordova上传图片/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">ionic4+angular7+cordova上传图片</div>
+    <a href="/2022/03/27/17、CMAKE编译iOS/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CMake编译iOS静态库.a</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -347,7 +386,7 @@
   
 
   
-  <div id="SOHUCS" sid="14、mac搭建php开发环境" ></div> 
+  <div id="SOHUCS" sid="18、Flutter中创建插件调用第三方的c库" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({

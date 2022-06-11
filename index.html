@@ -150,35 +150,39 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Flutter中创建插件调用第三方的c库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-19、Flutter调用android原生代码（插件开发）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/13/Flutter中创建插件调用第三方的c库/">Flutter中创建插件调用第三方的c库</a>
+      <a class="article-title" href="/2022/06/11/19、Flutter调用android原生代码（插件开发）/">Flutter调用android原生代码（插件开发）</a>
     </h1>
   
 
         
-        <a href="/2022/04/13/Flutter中创建插件调用第三方的c库/" class="archive-article-date">
-  	<time datetime="2022-04-13T13:14:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-13</time>
+        <a href="/2022/06/11/19、Flutter调用android原生代码（插件开发）/" class="archive-article-date">
+  	<time datetime="2022-06-11T02:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Flutter可直接调用android .so，ios .a库，有时候这个库需要通过c代码封装再提供给dart调用。<br>我们可通过dart:ffi来实现，在Flutter中创建插件调用第三方的c库。<br>github：<a href="https://github.com/lijmin/flutter_native_hello" target="_blank" rel="noopener">https://github.com/lijmin/flutter_native_hello</a></p>
-<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ol>
-<li>创建android libhello.so库， 参考：<a href="https://lijmin.github.io/2022/03/20/15、android%20NDK引入第三方so库及头文件/" target="_blank" rel="noopener">https://lijmin.github.io/2022/03/20/15、android%20NDK引入第三方so库及头文件/</a></li>
-<li>创建ios libhello.a库，参考：<a href="https://lijmin.github.io/2022/03/24/16、iOS生成.a静态库并引用/" target="_blank" rel="noopener">https://lijmin.github.io/2022/03/24/16、iOS生成.a静态库并引用/</a></li>
-<li>分别添加getHelloWorld函数<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">getHelloWorld</span><span class="params">(<span class="keyword">char</span> *name)</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> *hello = <span class="string">"Hello Android"</span>; <span class="comment">//iOS </span></span><br><span class="line">    <span class="keyword">char</span> *helloName = (<span class="keyword">char</span> *) <span class="built_in">malloc</span>(<span class="built_in">strlen</span>(hello) + <span class="built_in">strlen</span>(name));</span><br><span class="line">    <span class="built_in">strcpy</span>(helloName, hello);</span><br><span class="line">    <span class="built_in">strcat</span>(helloName, name);</span><br><span class="line">    <span class="keyword">return</span> helloName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>本文主要记录flutter插件开发，使用flutter调用android原生代码，android插件使用java语言，实现一个安装apk功能。<br><a href="https://github.com/lijmin/flutter_plugin_install_apk" target="_blank" rel="noopener">插件地址:https://github.com/lijmin/flutter_plugin_install_apk</a></p>
+<h2 id="创建flutter插件"><a href="#创建flutter插件" class="headerlink" title="创建flutter插件"></a>创建flutter插件</h2><p><code>flutter create --platforms=android -a java --template=plugin install_apk</code><br>只需要android平台，使用语言是java</p>
+<h2 id="添加dart接口"><a href="#添加dart接口" class="headerlink" title="添加dart接口"></a>添加dart接口</h2><p>lib目录下</p>
+<ul>
+<li><p>install_apk_platform_interface.dart 添加接口</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Future&lt;<span class="built_in">Map</span>&gt; installApk(<span class="built_in">String</span> filePath) &#123;</span><br><span class="line">  <span class="keyword">throw</span> UnimplementedError(<span class="string">'installApk() has not been implemented.'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
+<li><p>install_apk_method_channel.dart 添加接口实现，调用android的installApk方法</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@override</span></span><br><span class="line">Future&lt;<span class="built_in">Map</span>&gt; installApk(<span class="built_in">String</span> filePath) <span class="keyword">async</span> &#123;</span><br><span class="line">  <span class="built_in">Map</span>&lt;<span class="keyword">dynamic</span>, <span class="keyword">dynamic</span>&gt; map = &#123;<span class="string">"filePath"</span>:filePath&#125;;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">await</span> methodChannel.invokeMethod(<span class="string">'installApk'</span>, map);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
         
-          <a class="article-more-a" href="/2022/04/13/Flutter中创建插件调用第三方的c库/#more">more` >></a>
+          <a class="article-more-a" href="/2022/06/11/19、Flutter调用android原生代码（插件开发）/#more">more` >></a>
         
       
 
@@ -202,7 +206,89 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/13/Flutter中创建插件调用第三方的c库/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/06/11/19、Flutter调用android原生代码（插件开发）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-18、Flutter中创建插件调用第三方的c库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/13/18、Flutter中创建插件调用第三方的c库/">Flutter中创建插件调用第三方的c库</a>
+    </h1>
+  
+
+        
+        <a href="/2022/04/13/18、Flutter中创建插件调用第三方的c库/" class="archive-article-date">
+  	<time datetime="2022-04-13T13:14:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Flutter可直接调用android .so，ios .a库，有时候这个库需要通过c代码封装再提供给dart调用。<br>我们可通过dart:ffi来实现，在Flutter中创建插件调用第三方的c库。<br>github：<a href="https://github.com/lijmin/flutter_native_hello" target="_blank" rel="noopener">https://github.com/lijmin/flutter_native_hello</a></p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ol>
+<li>创建android libhello.so库， 参考：<a href="https://lijmin.github.io/2022/03/20/15、android%20NDK引入第三方so库及头文件/" target="_blank" rel="noopener">https://lijmin.github.io/2022/03/20/15、android%20NDK引入第三方so库及头文件/</a></li>
+<li>创建ios libhello.a库，参考：<a href="https://lijmin.github.io/2022/03/24/16、iOS生成.a静态库并引用/" target="_blank" rel="noopener">https://lijmin.github.io/2022/03/24/16、iOS生成.a静态库并引用/</a></li>
+<li>分别添加getHelloWorld函数<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">getHelloWorld</span><span class="params">(<span class="keyword">char</span> *name)</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> *hello = <span class="string">"Hello Android"</span>; <span class="comment">//iOS </span></span><br><span class="line">    <span class="keyword">char</span> *helloName = (<span class="keyword">char</span> *) <span class="built_in">malloc</span>(<span class="built_in">strlen</span>(hello) + <span class="built_in">strlen</span>(name));</span><br><span class="line">    <span class="built_in">strcpy</span>(helloName, hello);</span><br><span class="line">    <span class="built_in">strcat</span>(helloName, name);</span><br><span class="line">    <span class="keyword">return</span> helloName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+        
+          <a class="article-more-a" href="/2022/04/13/18、Flutter中创建插件调用第三方的c库/#more">more` >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">flutter</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/13/18、Flutter中创建插件调用第三方的c库/">展开全文 >></a>
         </p>
       
 
@@ -878,82 +964,6 @@
 
 
   
-    <article id="post-9、android上传library到jcenter" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/02/9、android上传library到jcenter/">android上传library到jcenter</a>
-    </h1>
-  
-
-        
-        <a href="/2018/02/02/9、android上传library到jcenter/" class="archive-article-date">
-  	<time datetime="2018-02-02T00:54:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.注册bintray账号<a href="https://bintray.com" target="_blank" rel="noopener">https://bintray.com</a><br>2.创建maven仓库<br>3.android studio创建module<br>4.项目build.gradle文件添加插件<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">        <span class="keyword">classpath</span> <span class="string">'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'</span></span><br><span class="line">        <span class="keyword">classpath</span> <span class="string">'com.github.dcendents:android-maven-gradle-plugin:1.5'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2018/02/02/9、android上传library到jcenter/#more">more` >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/02/9、android上传library到jcenter/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1043,11 +1053,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ionic4</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
+                <a href="javascript:void(0)" class="js-tag color2">ionic4</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1063,6 +1073,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">flutter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NDK</a>
               </li>
              
@@ -1071,11 +1085,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">CMake</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
+                <a href="javascript:void(0)" class="js-tag color3">windows</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1084,14 +1102,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">flutter</a>
               </li>
              
               <li class="article-tag-list-item">
